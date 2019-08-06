@@ -1,5 +1,5 @@
 {
-  "name": "social-network",
+  "name": "exit",
   "version": "1.0.0",
   "description": "Social Network @ Laboratoria",
   "main": "src/index.html",
@@ -27,5 +27,20 @@
     "jest": "^24.8.0",
     "regenerator-runtime": "^0.13.1",
     "serve": "^11.0.2"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "firebase": "^6.3.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/silviatrinidad/MEX008-social-network.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/silviatrinidad/MEX008-social-network/issues"
+  },
+  "homepage": "https://github.com/silviatrinidad/MEX008-social-network#readme"
 }
