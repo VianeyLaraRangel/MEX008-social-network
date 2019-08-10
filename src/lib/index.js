@@ -3,7 +3,6 @@
 export const myFunction = () => {
   // console.log('Hola mundo!');
 };
-
 const firebaseConfig = {
   apiKey: "AIzaSyAfAooPNMQOUS3UMPcAUDQHBXM64dAuBK0",
   authDomain: "hopaki-prueba.firebaseapp.com",
