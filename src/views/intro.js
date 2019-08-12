@@ -33,10 +33,9 @@ let intro = {
         let registrate = document.getElementById('registrate-button');
         //Detonar evento que escucha hash
         iniciaSesion.addEventListener('click', ()=> location.hash= "#/login");
-        registrate.addEventListener('click', () => location.hash= "#/signUp");
+        registrate.addEventListener('click', () => location.hash= "#/registro");
     }
 };
 
 export default intro;
 
-// class="hide-desktop-section"
