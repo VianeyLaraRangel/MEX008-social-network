@@ -1,30 +1,15 @@
-/*let perfil = {
+let perfil = {
     render: async () => {
         const view =
+
         `<h1>AQUI VAMOS A VER EL PERFIL DEL USUARIO</h1>
         <button class="btn btn-primary btn-usuario" id="usuario-button">ALERTA</button>`
 
-        return view,
-        console.log("perfil del usuario");
+        return view
     },
     after_render: async () => {
         //llamar contenido creado por medio de template
-        const btnUsuario= document.getElementById('usuario-button')
-        .addEventListener('click', () => {
-            location.hash= "#/intro";
-            alert ('Esto jala chido :D');
-        })
-    }
+            //alert ('Esto jala chido :D');
+        }
 };
-export default perfil;*/
-let login = {
-    render : async () => {
-        return `<div> 
-        <h1>Adios! </h1>
-        </div>`;
-    },
-    after_render : () => {}
-        
-    };
-
-export default login;
+export default perfil;
