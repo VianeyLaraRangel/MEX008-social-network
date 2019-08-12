@@ -132,3 +132,40 @@ h5 {
   background-color: #e9b000;
   border-color: #e24e42;
 }
+
+/* barra de inicio */
+
+#img-avatar {
+    width: 10%;
+    border-radius: 50%;
+}
+#perfil-avatar {
+    width: 55%;
+
+}
+
+.publicaciones {
+    box-sizing: border-box;
+    width: 50%;
+    border-radius: 10px;
+    background: #008F95;
+    padding: 20px;
+    margin:10px;
+}
+
+.tablero {
+  box-sizing: border-box;
+    width: 60%;
+    background: #008F95; 
+}
+
+
+.btn-purple {
+  background: #ae80da;
+  color: white;
+  border-color: #ae80da;
+}
+
+
+
+
