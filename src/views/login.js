@@ -1,11 +1,11 @@
 let login = {
-    render : async () => {
-        const view = 
-        `<h1> Hola</h1>`
+    render: async () => {
+        const view =
+            `<h1> Hola</h1>`
         return view
     },
-    
-    after_render : async () => {
+
+    after_render: async () => {
 
     }
 };

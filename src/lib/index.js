@@ -2,6 +2,11 @@
 // alert ("Aqui estoy :)");
 export const myFunction = () => {
   // console.log('Hola mundo!');
+  document.getElementById('login').addEventListener('click', () => {
+    alert('funciona tambien');
+    });
+    alert('funciona');
+  console.log('Hola mundo!');
 };
 const firebaseConfig = {
   apiKey: "AIzaSyAfAooPNMQOUS3UMPcAUDQHBXM64dAuBK0",
