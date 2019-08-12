@@ -15,7 +15,7 @@ console.log(Utils.parsedRequestUrl);
 
 const routes = {
     '/': intro,
-    '/login': login
+    '/login': login,
     '/perfil' : perfil
 };
 //Aquí el controlador de las rutas, esté comparará contra las rutas definidas y direccionará.
