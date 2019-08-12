@@ -1,10 +1,10 @@
 /*Pantalla de bienvenida desktop*/
 
 .hide-desktop-section {
- position: absolute;
- bottom: 1em;
- right: 3em;
- top: 3em;
+  position: absolute;
+  bottom: 1em;
+  right: 3em;
+  top: 3em;
 }
 
 /* .hidePresentation {
@@ -12,76 +12,123 @@
 } */
 
 .img-fondo-desktop {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .card-desktop {
- background-color: transparent;
- border-color: transparent;
+  background-color: transparent;
+  border-color: transparent;
 }
 
 .card-img-top {
-    height: auto;
-    width: 50%;
+  height: auto;
+  width: 50%;
 }
 
-.btn-principal{
-    width: 20%;
-    font-size: 18px;
-    margin: 10px;
+.btn-principal {
+  width: 20%;
+  font-size: 18px;
+  margin: 10px;
 }
 
 .cabecera {
-background-color: #E9B000;
-width: 100%;
-height: 60px;
-text-align: center;
-color: white;
+  background-color: #e9b000;
+  width: 100%;
+  height: 60px;
+  text-align: center;
+  color: white;
 }
 
-.registrar-box {
-    display: flex;
-    flex-direction: column;
+.boxData {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
 }
 .btn {
-    color: black;
+  border-radius: 30px;
+  color: black;
 }
 
-
 section {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .btn-primary {
-    border-radius: 15px;
- background-color: #E9B000;
- border-color: #E24E42;
+  border-radius: 15px;
+  background-color: #e9b000;
+  border-color: #e24e42;
 }
 
 .card-body {
-    text-align: center;
+  text-align: center;
 }
 
 .btn-social {
-    border-radius: 20px;
-    font-size: 15px;
-    width: 200px;
-    height: 40px;
-    border-color: #E24E42;
-    background-color: white;
+  border-radius: 20px;
+  font-size: 15px;
+  width: 200px;
+  height: 40px;
+  border-color: #e24e42;
+  background-color: white;
 }
 
 .img-social {
-    width: 25px;
-    height: 25px;
+  width: 25px;
+  height: 25px;
 }
 
 h5 {
-font-family: 'Gidole';
-font-size: 30px;
+  font-family: "Gidole";
+  font-size: 30px;
+}
+
+.btn-secondary {
+  width: 250px;
+  background-color: #b1b9ad;
+}
+
+.cabecera2 {
+  background-color: #e24e42;
+  width: 100%;
+  height: 60px;
+  text-align: center;
+  color: white;
+}
+
+.line-logo {
+  padding: 2%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.decorate {
+  color: black;
+  background-color: black;
+  border-color: black;
+  height: 5%;
+  width: 30%;
+  size: 5px;
+}
+
+.mail-pass {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+
+.btn-send {
+  width: 100px;
+  border-radius: 20px;
+  background-color: #e9b000;
+  border-color: #e24e42;
 }
