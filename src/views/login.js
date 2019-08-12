@@ -31,7 +31,7 @@ let login = {
     <input type="text" class="form-control" placeholder="Ingresa tu contraseña" aria-describedby="basic-addon1">
     </div>
     <br>
-    <button id="registrar-btn" class="btn-send btn">Enviar</button>
+    <button id="entrar-btn" class="btn-send btn">Ingresar</button>
  </div>`;
     return view;
   },
