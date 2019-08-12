@@ -36,7 +36,10 @@ let login = {
     return view;
   },
 
-  after_render: async () => {}
+  after_render: async () => {
+    let register = document.getElementById('registrar-btn');
+        register.addEventListener('click', () => location.hash = "#/inicio");
+  }
 };
 
 export default login;
