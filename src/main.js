@@ -7,6 +7,7 @@
 import intro  from './views/intro.js';
 import login  from './views/login.js';
 import Utils from './views/parsedRequestURL.js';
+import perfil from './views/perfil.js';
 console.log(Utils.parsedRequestUrl);
 //import Utils from './views/parsedRequestURL.js';
 
@@ -15,6 +16,7 @@ console.log(Utils.parsedRequestUrl);
 const routes = {
     '/': intro,
     '/login': login
+    '/perfil' : perfil
 };
 //Aquí el controlador de las rutas, esté comparará contra las rutas definidas y direccionará.
 
