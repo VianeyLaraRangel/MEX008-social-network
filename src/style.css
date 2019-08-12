@@ -153,5 +153,19 @@ h5 {
     margin:10px;
 }
 
+.tablero {
+  box-sizing: border-box;
+    width: 60%;
+    background: #008F95; 
+}
+
+
+.btn-purple {
+  background: #ae80da;
+  color: white;
+  border-color: #ae80da;
+}
+
+
 
 
