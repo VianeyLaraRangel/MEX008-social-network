@@ -92,6 +92,10 @@ font-size: 30px;
     width: 10%;
     border-radius: 50%;
 }
+#perfil-avatar {
+    width: 55%;
+
+}
 
 .publicaciones {
     box-sizing: border-box;
