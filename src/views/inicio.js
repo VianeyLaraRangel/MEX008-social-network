@@ -3,6 +3,7 @@ let inicio = {
         const view = 
     //`<p>Inicio </p>`
     `<header class="cabecera-inicio">
+    <img src="./img/avatar.jpg" id= "img-avatar">
     <h1>Hola Usuario</h1>
     </header>
         <div class="registrar-box">
@@ -12,7 +13,7 @@ let inicio = {
         return view;
     },
     after_render : async () => {
-        alert('Continuamos');
+        //alert('Continuamos');
     }
 
 };
