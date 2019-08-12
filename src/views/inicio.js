@@ -1,23 +1,11 @@
 let inicio = { 
     render : async () => {
         const view = 
-    /*`<p>Inicio </p>`
-    `<header class="cabecera-inicio">
-    <img src="./img/avatar.jpg" id= "img-avatar">
-    <h1>Hola José</h1>
-    <div id="menu">
-    <p>Mis publicaciones</<p>
-    <p>Elementos guardados</<p>
-    <p>Conexiones</<p>
-    </div>
-    </header>
-        <div class="registrar-box">
-             <h6>Aqui va el contenido de inicio</h6>
-        </div>`*/
-        `<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+
+        `<nav class="navbar navbar-expand-sm bg-danger navbar-dark text-white">
          <!-- Brand/logo -->
   <a class="navbar-brand" href="#">
-    <img src="./img/avatar.jpg" alt="logo" style="width:90px;">
+    <img src="./img/avatar.jpg" alt="logo" style="width:90px;" id="img-avatar">
   </a>
   
   <!-- Links -->
@@ -40,7 +28,11 @@ let inicio = {
     </li>
     </li>
   </ul>
-</nav>`
+</nav>
+<section class="publicaciones">
+<textarea name="publicacion" rows="3" cols="40">¿Qué vas a compartir hoy?</textarea>
+<button id="btn-publicar" class="bg-warning">Publicar</button>
+</section>`
 
         return view;
     },

@@ -43,24 +43,6 @@ text-align: center;
 color: white;
 }
 
-/* inicio
-.cabecera-inicio {
-    display: flex;
-    align-items: initial;
-    background-color: #E24E42;
-    width: 100%;
-    height: 150px;
-    text-align: center;
-    color: white;
-    
-}
-#img-avatar {
-    width: 10%;
-    
-    border-radius: 50%;
-    
-} */
-
 .registrar-box {
     display: flex;
     flex-direction: column;
@@ -102,6 +84,26 @@ section {
 h5 {
 font-family: 'Gidole';
 font-size: 30px;
+}
+
+/* barra de inicio */
+
+#img-avatar {
+    width: 10%;
+    border-radius: 50%;
+}
+
+.publicaciones {
+    box-sizing: border-box;
+    width: 50%;
+    border-radius: 10px;
+    background: #008F95;
+    padding: 20px;
+    margin:10px;
+}
+#btn-publicar {
+    display:block;
+    flex-direction: column;
 }
 
 
