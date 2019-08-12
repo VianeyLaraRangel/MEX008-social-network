@@ -1,6 +1,6 @@
-let perfil = {
+/*let perfil = {
     render: async () => {
-        let view =
+        const view =
         `<h1>AQUI VAMOS A VER EL PERFIL DEL USUARIO</h1>
         <button class="btn btn-primary btn-usuario" id="usuario-button">ALERTA</button>`
 
@@ -13,6 +13,7 @@ let perfil = {
         .addEventListener('click', () => {
             location.hash= "#/intro";
             alert ('Esto jala chido :D');
-        }),
-    },
+        })
+    }
 };
+export default perfil;*/
