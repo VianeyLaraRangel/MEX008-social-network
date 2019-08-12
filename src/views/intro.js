@@ -3,7 +3,7 @@ let intro = {
         let view = 
         `
         <section>
-          <img src="/src/img/fondodesktop.jpg" alt="fondo-lapices" class="img-fondo-desktop">
+          <img src="https://github.com/VianeyLaraRangel/MEX008-social-network/blob/master/src/img/fondodesktop.jpg?raw=true" alt="fondo-lapices" class="img-fondo-desktop">
             
           <div class="card card-desktop" style="width: 45rem;">
             <div class="card-body">
