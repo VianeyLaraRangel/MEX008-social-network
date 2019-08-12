@@ -43,21 +43,23 @@ text-align: center;
 color: white;
 }
 
-/* inicio*/
+/* inicio
 .cabecera-inicio {
+    display: flex;
+    align-items: initial;
     background-color: #E24E42;
     width: 100%;
-    height: 60px;
+    height: 150px;
     text-align: center;
     color: white;
     
 }
 #img-avatar {
-    width: 15%;
-    display: block;
+    width: 10%;
+    
     border-radius: 50%;
     
-}
+} */
 
 .registrar-box {
     display: flex;
