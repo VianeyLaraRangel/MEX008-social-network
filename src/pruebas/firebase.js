@@ -1,10 +1,8 @@
  //llamando a las funciones 
   const registrar = () => {
-    //console.log("diste click");
     const email= document.getElementById("email").value;
     const password= document.getElementById("password").value;
-    //console.log(email);
-    //console.log(password);
+    
     firebase.auth().createUserWithEmailAndPassword(email, password)
     .catch(function(error) {
         // Handle Errors here.
@@ -12,6 +10,12 @@
         const errorMessage = error.message;
         console.log(errorCode);
         console.log(errorMessage);
+      
+        if (errorCode === "auth/invalid-email") {
+          alert('Correo inválido: Ingresa la dirección completa');
+        } else if (errorCode === "auth/weak-password") {
+          alert('La constraseña debe tener 6 caracteres mínimo');
+        }
       });
   };
 
