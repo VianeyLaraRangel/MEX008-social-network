@@ -7,7 +7,7 @@ import Utils from './views/parsedRequestURL.js';
 import perfil from './views/perfil.js';
 import registro from './views/registro.js';
 import inicio from './views/inicio.js';
-console.log(Utils.parsedRequestUrl);
+
 //import Utils from './views/parsedRequestURL.js';
 
 //Crear un objeto que contenga las rutas como llaves y su valor (List of supported routes)
