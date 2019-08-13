@@ -14,6 +14,10 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="media.css">
   <title>HOPAKI</title>
+  <!--Añadiendo firebase app y auth-->
+  <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"></script>
+
 </head>
 
 <body>
@@ -26,22 +30,22 @@
 
   <!--Enlaces javascript-->
   <script type="module" src="main.js"></script>
-  <script src="firebase.js"></script>
+  <!-- <script src="firebase.js"></script> -->
 
   <!--Añadiendo configuración de firebase-->
   <script>
     const firebaseConfig = {
-       apiKey: "AIzaSyAfAooPNMQOUS3UMPcAUDQHBXM64dAuBK0",
-       authDomain: "hopaki-prueba.firebaseapp.com",
-       databaseURL: "https://hopaki-prueba.firebaseio.com",
-       projectId: "hopaki-prueba",
-       storageBucket: "",
-       messagingSenderId: "967562359456",
-       appId: "1:967562359456:web:8517811f94b84354"
+      apiKey: "AIzaSyAfAooPNMQOUS3UMPcAUDQHBXM64dAuBK0",
+      authDomain: "hopaki-prueba.firebaseapp.com",
+      databaseURL: "https://hopaki-prueba.firebaseio.com",
+      projectId: "hopaki-prueba",
+      storageBucket: "",
+      messagingSenderId: "967562359456",
+      appId: "1:967562359456:web:8517811f94b84354"
     };
     // Inicializando Firebase
     firebase.initializeApp(firebaseConfig);
- </script>
+  </script>
 
   <!-- Añadiendo enlaces a Bootstrap-->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

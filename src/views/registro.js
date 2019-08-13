@@ -36,13 +36,13 @@ const registro = {
  </div>
  `
         return view
-
     },
 
     after_render: async () => {
         let register = document.getElementById('registrar-btn');
-        register.addEventListener('click', () => location.hash = "#/inicio");
+        register.addEventListener('click', registrar);
     }
 };
 
+() => location.hash = "#/inicio"
 export default registro;

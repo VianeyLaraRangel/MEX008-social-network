@@ -22,16 +22,12 @@ const routes = {
 //Aquí el controlador de las rutas, esté comparará contra las rutas definidas y direccionará.
 
 const router = async () => {
-  //
   const content = null || document.getElementById('content');
-  //
-  let request = Utils.parsedRequestUrl();
+  const request = Utils.parsedRequestUrl();
   
-  //
-  let parsedUrl = (request.resource ? '/' + request.resource : '/')
+  const parsedUrl = (request.resource ? '/' + request.resource : '/')
   + (request.id ? '/:id' : '') + (request.verb ? '/' + request.verb : '');
-  console.log(parsedUrl);
-  //obtener la página desde el hash
+  //Obtener la página desde el hash
   let page = routes [parsedUrl] ? routes[parsedUrl] : error404;
   content.innerHTML = await page.render();
   await page.after_render();
