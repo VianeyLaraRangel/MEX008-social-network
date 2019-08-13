@@ -1,7 +1,7 @@
-let registro = {
-    render : async () => {
-    const view = 
-    `<header class="cabecera">
+const registro = {
+    render: async () => {
+        const view = `
+    <header class="cabecera">
     <h1>Crear cuenta</h1>
     </header>
     <br>
@@ -33,15 +33,16 @@ let registro = {
     </div>
     <br>
     <button id="registrar-btn" class="btn-send btn">Enviar</button>
- </div>`
+ </div>
+ `
         return view
 
     },
 
-    after_render : async () => {
+    after_render: async () => {
         let register = document.getElementById('registrar-btn');
         register.addEventListener('click', () => location.hash = "#/inicio");
-    } 
+    }
 };
 
 export default registro;
