@@ -29,7 +29,7 @@
         console.log(errorMessage);
       });
   }
-  
+//Observador de la autenticación  
   function observador() {
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
@@ -53,14 +53,7 @@
     }
   observador();
   
-  function aparece() {
-    //var contenido= document.getElementById("contenido");
-    //contenido.innerHTML= "Solo lo ve usuario activo";
-    //vistados.innerHTML;
-    `<p> HOLA!!</p>
-    <button onclick="cerrar()">Cerrar Sesión</button>`
-  };
-  
+
   function cerrar() {
     firebase.auth().signOut()
     .then(function() {
