@@ -1,4 +1,4 @@
- //llamando a las funciones 
+ //Función registrar usuario con correo y contraseña
   const registrar = () => {
     const email= document.getElementById("email").value;
     const password= document.getElementById("password").value;
@@ -22,7 +22,8 @@
   };
 
   const btnRegistrar = document.getElementById('registrar-btn').addEventListener('click', registrar);
-  
+
+//Funcion para ingreso
   function ingreso() {
     const email2= document.getElementById("email2").value;
     const password2= document.getElementById("password2").value;
