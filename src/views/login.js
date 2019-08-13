@@ -32,6 +32,9 @@ let login = {
     </div>
     <br>
     <button id="entrar-btn" class="btn-send btn">Ingresar</button>
+    <br>
+    <p> ¿Aún no tienes cuenta? Registrate <a href="/src/index.html#/registro" class="alert-link">Aquí</a>
+    <p> ¿Olvidaste tu contraseña? Presiona <a href="#" class="alert-link">Aquí</a>
  </div>`;
     return view;
   },
@@ -43,3 +46,4 @@ let login = {
 };
 
 export default login;
+

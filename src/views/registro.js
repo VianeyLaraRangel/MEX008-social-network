@@ -33,6 +33,8 @@ let registro = {
     </div>
     <br>
     <button id="registrar-btn" class="btn-send btn">Enviar</button>
+    <br>
+    <p> ¿Ya tienes cuenta? Ingresa <a href="/src/index.html#/login" class="alert-link">Aquí</a>
  </div>`
         return view
 
