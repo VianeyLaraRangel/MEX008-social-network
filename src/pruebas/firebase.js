@@ -14,19 +14,21 @@
         if (errorCode === "auth/invalid-email") {
           alert('Correo inválido: Ingresa la dirección completa');
         } else if (errorCode === "auth/weak-password") {
-          alert('La constraseña debe tener 6 caracteres mínimo');
+          alert('La contraseña debe tener 6 caracteres mínimo');
         } else if (errorCode === "auth/email-already-in-use") {
           alert('La dirección de correo electrónico ya fué registrada');
         }
-      });
-  };
+      })
+  }
 
   const btnRegistrar = document.getElementById('registrar-btn').addEventListener('click', registrar);
 
 //Funcion para ingreso
-  function ingreso() {
+  const ingreso= () => {
     const email2= document.getElementById("email2").value;
     const password2= document.getElementById("password2").value;
+    
+
     firebase.auth().signInWithEmailAndPassword(email2, password2)
     .catch(function(error) {
         // Handle Errors here.
@@ -34,18 +36,31 @@
         const errorMessage = error.message;
         console.log(errorCode);
         console.log(errorMessage);
-      });
+
+        if (errorCode === "auth/invalid-email") {
+          alert('correo invalido. No es correcto o no has iniciado sesión');
+        } else if (errorCode === "auth/weak-password" || errorCode === "auth/wrong-password") {
+          alert('La contraseña es incorrecta, verificala');
+        } else if (errorCode === "auth/email-already-in-use") {
+          alert('La dirección de correo electrónico ya existe');
+        } else if ( errorCode === "auth/user-not-found") {
+          alert("Este usuario no existe, por favor registrate");
+        }
+      })
   }
-//Observador de la autenticación  
-  function observador() {
+  const btnInicioSesion = document.getElementById('btn-ingreso').addEventListener('click', ingreso);
+
+
+  //Observador de la autenticación  
+  const observador= () => {
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             console.log("existe usuario activo");
-            aparece();
+            //aparece();
           // User is signed in.
           const displayName = user.displayName;
           const email = user.email;
-          console.log("user");
+          //console.log(user);
           const emailVerified = user.emailVerified;
           const photoURL = user.photoURL;
           const isAnonymous = user.isAnonymous;
@@ -61,7 +76,7 @@
   observador();
   
 
-  function cerrar() {
+  /*function cerrar() {
     firebase.auth().signOut()
     .then(function() {
         console.log("saliendo");
@@ -70,4 +85,4 @@
     .catch(function(error) {
         console.log(error);
     })
-  }
+  } */

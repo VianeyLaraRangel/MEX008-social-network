@@ -20,6 +20,28 @@ s    https://firebase.google.com/docs/web/setup#config-web-app -->
 </head>
 
 <body>
+<!--codigo desde fb developers-->
+<script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '{your-app-id}',
+          cookie     : true,
+          xfbml      : true,
+          version    : '{api-version}'
+        });
+          
+        FB.AppEvents.logPageView();   
+          
+      };
+    
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "https://connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
 
    <header class="cabecera">
       <h1>Crear cuenta</h1>
@@ -45,7 +67,7 @@ s    https://firebase.google.com/docs/web/setup#config-web-app -->
    <h4>INGRESO DE USUARIOS</h4>
    <input id="email2" type="email" placeholder="ingresa tu mail">
    <input id="password2" type="password" placeholder="ingresa tu password">
-   <button onclick="ingreso()">Enviar</button>
+   <button id="btn-ingreso">Enviar</button>
    <div id="contenido"> </div>
 
    <script>
