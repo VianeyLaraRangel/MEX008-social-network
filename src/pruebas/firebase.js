@@ -15,6 +15,8 @@
           alert('Correo inválido: Ingresa la dirección completa');
         } else if (errorCode === "auth/weak-password") {
           alert('La constraseña debe tener 6 caracteres mínimo');
+        } else if (errorCode === "auth/email-already-in-use") {
+          alert('La dirección de correo electrónico ya fué registrada');
         }
       });
   };
