@@ -12,7 +12,7 @@ let login = {
                 <button type="button" class="btn btn-secondary"><img src="img/googleicon.png" width="10%"
                 height="auto"><strong>Entrar con Google</strong></button> 
             <br>
-                <button type="button" class="btn btn-secondary"><img src="img/facebookicon.png" width="10%"
+                <button type="button" id="btn-fb" class="btn btn-secondary"><img src="img/facebookicon.png" width="10%"
                  height="auto"><strong>Entrar con Facebook</strong> </button>
             </div>
             
