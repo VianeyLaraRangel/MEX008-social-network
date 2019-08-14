@@ -55,4 +55,3 @@ let inicio = {
 
 };
     export default inicio;
-    
