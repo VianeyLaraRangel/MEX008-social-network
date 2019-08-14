@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "index.html",
+    "public": "/home/silviatrinidad/Escritorio/Proyectos-Laboratoria/MEX008-social-network/src",
     "ignore": [
       "firebase.json",
       "**/.*",
