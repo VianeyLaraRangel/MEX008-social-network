@@ -37,7 +37,8 @@ const registerFb = () => {
   //agregamos la instancia de objeto de proveedor de FB
   const provider = new firebase.auth.FacebookAuthProvider();
   //acceder con su cuenta, por medio de un popup
-  firebase.auth().signInWithPopup(provider).then(function (result) {
+  firebase.auth().signInWithPopup(provider)
+  .then(function (result) {
     alert('exito');
     console.log('result');
     // This gives you a Facebook Access Token. You can use it to access the Facebook API.
