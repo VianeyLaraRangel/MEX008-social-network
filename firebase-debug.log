@@ -1,0 +1,29 @@
+[debug] [2019-08-14T20:18:01.546Z] ----------------------------------------------------------------------
+[debug] [2019-08-14T20:18:01.549Z] Command:       /usr/bin/node /usr/local/bin/firebase serve --host 0.0.0.0
+[debug] [2019-08-14T20:18:01.549Z] CLI Version:   7.2.2
+[debug] [2019-08-14T20:18:01.549Z] Platform:      linux
+[debug] [2019-08-14T20:18:01.549Z] Node Version:  v8.10.0
+[debug] [2019-08-14T20:18:01.549Z] Time:          Wed Aug 14 2019 15:18:01 GMT-0500 (CDT)
+[debug] [2019-08-14T20:18:01.550Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-08-14T20:18:01.557Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-08-14T20:18:01.557Z] > authorizing via signed-in user
+[debug] [2019-08-14T20:18:01.557Z] [iam] checking project hopaki-prueba for permissions ["firebase.projects.get"]
+[debug] [2019-08-14T20:18:01.559Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-08-14T20:18:01.560Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-08-14T20:18:01.855Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-14T20:18:01.859Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/hopaki-prueba:testIamPermissions  
+
+[debug] [2019-08-14T20:18:02.203Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-14T20:18:02.207Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/hopaki-prueba  
+ 
+[debug] [2019-08-14T20:18:02.560Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/silviatrinidad/Escritorio/Proyectos-Laboratoria/MEX008-social-network'...
+[info] 
+[debug] [2019-08-14T20:18:02.567Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/hopaki-prueba/webApps/-/config  
+ 
+[debug] [2019-08-14T20:18:03.003Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: src/
+[info] ✔  hosting: Local server: http://0.0.0.0:5000

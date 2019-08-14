@@ -11,6 +11,14 @@ const firebaseConfig = {
 // Inicializando Firebase
 firebase.initializeApp(firebaseConfig);
 
+//comprobar inicio de sesion anteriormente con fb
+const comprobarSesionFb= () => {
+  const prvider = new firebase.auth
+}
+
+
+
+
 //registro por medio de fb
 const sessionFb= () => {
   //agregamos la instancia de objeto de proveedor de FB
