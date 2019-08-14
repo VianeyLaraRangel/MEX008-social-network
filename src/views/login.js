@@ -12,7 +12,7 @@ let login = {
                 <button type="button" class="btn btn-secondary"><img src="img/googleicon.png" width="10%"
                 height="auto"><strong>Entrar con Google</strong></button> 
             <br>
-                <button type="button" class="btn btn-secondary"><img src="img/facebookicon.png" width="10%"
+                <button type="button" id="btn-fb" class="btn btn-secondary"><img src="img/facebookicon.png" width="10%"
                  height="auto"><strong>Entrar con Facebook</strong> </button>
             </div>
             
@@ -40,6 +40,10 @@ let login = {
   },
 
   after_render: async () => {
+      //botonFB
+      const btnFb= document.getElementById('btn-fb')
+      .addEventListener('click', sessionFb);
+
     const register = document.getElementById('registrar-btn');
         register.addEventListener('click', () => location.hash = "#/inicio");
   }
