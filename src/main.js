@@ -36,3 +36,5 @@ const router = async () => {
 //llamando objeto y escuchando hash
 window.addEventListener('hashchange', router);
 window.addEventListener('load', router);
+
+
