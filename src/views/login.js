@@ -40,6 +40,33 @@ let login = {
   },
 
   after_render: async () => {
+      const btnFb= document.getElementById('btn-fb')
+      .addEventListener('click', () => {
+          //agregamos la instancia de objeto de proveedor de FB
+          const provider = new firebase.auth.FacebookAuthProvider();
+          //acceder con su cuenta, por medio de un popup
+          firebase.auth().signInWithPopup(provider).then(function(result) {
+              alert('exito');
+              console.log('result');
+            // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+            var token = result.credential.accessToken;
+            // The signed-in user info.
+            var user = result.user;
+            // ...
+          }).catch(function(error) {
+              alert('error');
+              console.log(error);
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // The email of the user's account used.
+            var email = error.email;
+            // The firebase.auth.AuthCredential type that was used.
+            var credential = error.credential;
+            // ...
+          });
+      })
+
     const register = document.getElementById('registrar-btn');
         register.addEventListener('click', () => location.hash = "#/inicio");
   }
