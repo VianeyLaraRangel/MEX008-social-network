@@ -1,6 +1,6 @@
 let login = {
-  render: async () => {
-    const view = `
+    render: async () => {
+        const view = `
             <header class="cabecera2">
                 <h1>Iniciar Sesión</h1>
             </header>
@@ -9,16 +9,16 @@ let login = {
                 <h6>Puedes iniciar sesión con las siguientes redes sociales:</h6>
                  <br>
                 
-                <button type="button" class="btn btn-secondary"><img src="img/googleicon.png" width="10%"
+                <button type="button" class="btn btn-secondary"><img src="https://github.com/VianeyLaraRangel/MEX008-social-network/blob/master/src/img/googleicon.png?raw=true" width="10%"
                 height="auto"><strong>Entrar con Google</strong></button> 
             <br>
-                <button type="button" id="btn-fb" class="btn btn-secondary"><img src="img/facebookicon.png" width="10%"
+                <button type="button" id="btn-fb" class="btn btn-secondary"><img src="https://github.com/VianeyLaraRangel/MEX008-social-network/blob/master/src/img/facebookicon.png?raw=true" width="10%"
                  height="auto"><strong>Entrar con Facebook</strong> </button>
             </div>
             
             <div class="line-logo">
                 <hr class="decorate">
-                <img class="hopaki-pk" src="img/hopaki-pk.png" width="10%" height="auto">
+                <img class="hopaki-pk" src="https://github.com/VianeyLaraRangel/MEX008-social-network/blob/master/src/img/hopaki-pk.png?raw=true" width="10%" height="auto">
                 <hr class="decorate">
             </div>
             <div class="mail-pass">
@@ -36,17 +36,15 @@ let login = {
             <button id="registrar-btn" class="btn-send btn">Enviar</button>
             </div>
             `;
-    return view;
-  },
+        return view;
+    },
 
-  after_render: async () => {
-      //botonFB
-      const btnFb= document.getElementById('btn-fb')
-      .addEventListener('click', sessionFb);
-
-    const register = document.getElementById('registrar-btn');
+    after_render: async () => {
+        
+        const register = document.getElementById('registrar-btn');
+        
         register.addEventListener('click', () => location.hash = "#/inicio");
-  }
+    }
 };
 
 export default login;

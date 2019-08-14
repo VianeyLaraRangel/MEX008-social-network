@@ -8,7 +8,7 @@ const firebaseConfig = {
   messagingSenderId: "967562359456",
   appId: "1:967562359456:web:8517811f94b84354"
 };
-// Inicializando Firebase
+// Inicializando Firebaseeee
 firebase.initializeApp(firebaseConfig);
 
 //comprobar inicio de sesion anteriormente con fb
@@ -44,8 +44,6 @@ const sessionFb= () => {
     var credential = error.credential;
     // ...
   });
-
-
 }
           
 
@@ -67,10 +65,36 @@ const registrar = (email, password) => {
         alert('La dirección de correo electrónico ya fué registrada');
       }
     });
-    location.hash = "#/inicio"
+  location.hash = "#/inicio"
 };
 
-console.log(registrar);
+//Registro con google
+const registerGmail = () => {
+  //crea una instancia del objeto del proveedor de Google
+  const provider = new firebase.auth.GoogleAuthProvider();
+  //Autentica a traves de una ventana emergente
+  firebase.auth().signInWithPopup(provider)
+    .then(function (result) {
+      console.log(result);
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      var token = result.credential.accessToken;
+      // The signed-in user info.
+      var user = result.user;
+      // ...
+      console.log('Hola');
+    })
+    .catch(function (error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // The email of the user's account used.
+      var email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      var credential = error.credential;
+      // ...
+    });
+};
+
 
 //Funcion para ingreso
 function ingreso() {
@@ -110,14 +134,7 @@ const observador = () => {
   });
 };
 
-observador();
 
-function aparece() {
-  var contenido = document.getElementById("content");
-  contenido.innerHTML = "Solo lo ve usuario activo";
-  contenido.innerHTML = `<p> HOLA!!</p>
-    <button onclick="cerrar()">Cerrar Sesión</button>`
-};
 
 function cerrar() {
   firebase.auth().signOut()
