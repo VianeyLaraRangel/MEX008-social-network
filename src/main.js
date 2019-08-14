@@ -1,5 +1,5 @@
-// Este es el punto de entrada de tu aplicacion
-"use strict";
+//Este archivo es la entrada de la aplicación
+// "use strict";
 //Importar los archivos JS que imprimiran las pantallas
 import intro  from './views/intro.js';
 import login  from './views/login.js';
