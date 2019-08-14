@@ -1,18 +1,21 @@
 let login = {
   render: async () => {
-    const view = `<header class="cabecera2">
-        <h1>Iniciar Sesión</h1>
-        </header>
-        <br>
+    const view = `
+            <header class="cabecera2">
+                <h1>Iniciar Sesión</h1>
+            </header>
+            <br>
             <div class="ingresar-box boxData">
-                 <h6>Puedes iniciar sesión con las siguientes redes sociales:</h6>
+                <h6>Puedes iniciar sesión con las siguientes redes sociales:</h6>
                  <br>
+                
                 <button type="button" class="btn btn-secondary"><img src="img/googleicon.png" width="10%"
                 height="auto"><strong>Entrar con Google</strong></button> 
-                <br>
+            <br>
                 <button type="button" class="btn btn-secondary"><img src="img/facebookicon.png" width="10%"
                  height="auto"><strong>Entrar con Facebook</strong> </button>
             </div>
+            
             <div class="line-logo">
      <hr class="decorate">
      <img class="hopaki-pk" src="img/hopaki-pk.png" width="10%" height="auto">
@@ -40,10 +43,9 @@ let login = {
   },
 
   after_render: async () => {
-    let register = document.getElementById('registrar-btn');
+    const register = document.getElementById('registrar-btn');
         register.addEventListener('click', () => location.hash = "#/inicio");
   }
 };
 
 export default login;
-

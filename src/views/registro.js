@@ -1,14 +1,14 @@
-let registro = {
-    render : async () => {
-    const view = 
-    `<header class="cabecera">
+const registro = {
+    render: async () => {
+        const view = `
+    <header class="cabecera">
     <h1>Crear cuenta</h1>
     </header>
     <br>
         <div class="registrar-box boxData">
              <h6>Puedes registrarte con las siguientes redes sociales:</h6>
              <br>
-            <button type="button" class="btn btn-secondary"><img src="img/googleicon.png" width="10%"
+            <button type="button" class="btn btn-secondary id="btn-google""><img src="img/googleicon.png" width="10%"
             height="auto"><strong>Registrar con Google</strong></button>
             <br>
             <button type="button" class="btn btn-secondary"><img src="img/facebookicon.png" width="10%"
@@ -40,10 +40,10 @@ let registro = {
 
     },
 
-    after_render : async () => {
+    after_render: async () => {
         let register = document.getElementById('registrar-btn');
         register.addEventListener('click', () => location.hash = "#/inicio");
-    } 
+    }
 };
 
 export default registro;
