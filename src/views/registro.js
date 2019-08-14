@@ -11,7 +11,7 @@ const registro = {
             <button type="button" class="btn btn-secondary"><img src="img/googleicon.png" width="10%"
             height="auto"><strong>Registrar con Google</strong></button>
             <br>
-            <button type="button" class="btn btn-secondary"><img src="img/facebookicon.png" width="10%"
+            <button type="button" id="btn-fb" class="btn btn-secondary"><img src="img/facebookicon.png" width="10%"
              height="auto"><strong>Registrar con Facebook</strong> </button>
         </div>
         <div class="line-logo">
