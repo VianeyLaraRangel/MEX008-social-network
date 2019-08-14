@@ -20,6 +20,28 @@ s    https://firebase.google.com/docs/web/setup#config-web-app -->
 </head>
 
 <body>
+<!--codigo desde fb developers-->
+<script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '{your-app-id}',
+          cookie     : true,
+          xfbml      : true,
+          version    : '{api-version}'
+        });
+          
+        FB.AppEvents.logPageView();   
+          
+      };
+    
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "https://connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
 
    <header class="cabecera">
       <h1>Crear cuenta</h1>
@@ -45,25 +67,12 @@ s    https://firebase.google.com/docs/web/setup#config-web-app -->
    <h4>INGRESO DE USUARIOS</h4>
    <input id="email2" type="email" placeholder="ingresa tu mail">
    <input id="password2" type="password" placeholder="ingresa tu password">
-   <button onclick="ingreso()">Enviar</button>
+   <button id="btn-ingreso">Enviar</button>
    <div id="contenido"> </div>
 
-   <script>
-      const firebaseConfig = {
-         apiKey: "AIzaSyAfAooPNMQOUS3UMPcAUDQHBXM64dAuBK0",
-         authDomain: "hopaki-prueba.firebaseapp.com",
-         databaseURL: "https://hopaki-prueba.firebaseio.com",
-         projectId: "hopaki-prueba",
-         storageBucket: "",
-         messagingSenderId: "967562359456",
-         appId: "1:967562359456:web:8517811f94b84354"
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-   </script>
-
+   
    <!--<script src="app.js"></script>-->
-   <script src="vistados.js"></script>
+   <script src="firebase.js"></script>
 </body>
 
 </html>

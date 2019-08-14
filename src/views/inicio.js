@@ -5,7 +5,7 @@ let inicio = {
         `<nav class="navbar navbar-expand-sm bg-danger navbar-dark text-white">
          <!-- Brand/logo -->
   <a class="navbar-brand">
-    <img src="./img/avatar.jpg" alt="avatar" style="width:90px;" id="img-avatar">
+    <img src="src/img/avatar.jpg" alt="avatar" style="width:90px;" id="img-avatar">
   </a>
   
   <!-- Links -->

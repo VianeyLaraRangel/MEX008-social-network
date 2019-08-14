@@ -7,8 +7,6 @@ import Utils from './views/parsedRequestURL.js';
 import perfil from './views/perfil.js';
 import registro from './views/registro.js';
 import inicio from './views/inicio.js';
-console.log(Utils.parsedRequestUrl);
-//import Utils from './views/parsedRequestURL.js';
 
 //Crear un objeto que contenga las rutas como llaves y su valor (List of supported routes)
 
@@ -19,22 +17,20 @@ const routes = {
     '/registro' : registro,
     '/inicio' : inicio
 };
+
 //Aquí el controlador de las rutas, esté comparará contra las rutas definidas y direccionará.
 
 const router = async () => {
-  //
   const content = null || document.getElementById('content');
-  //
-  let request = Utils.parsedRequestUrl();
+  const request = Utils.parsedRequestUrl();
   
-  //
-  let parsedUrl = (request.resource ? '/' + request.resource : '/')
+  const parsedUrl = (request.resource ? '/' + request.resource : '/')
   + (request.id ? '/:id' : '') + (request.verb ? '/' + request.verb : '');
-  console.log(parsedUrl);
-  //obtener la página desde el hash
+  //Obtener la página desde el hash
   let page = routes [parsedUrl] ? routes[parsedUrl] : error404;
   content.innerHTML = await page.render();
   await page.after_render();
+
 }
 //llamando objeto y escuchando hash
 window.addEventListener('hashchange', router);
