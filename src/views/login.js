@@ -40,13 +40,10 @@ let login = {
     },
 
     after_render: async () => {
-        //botonFB
-        const btnFb = document.getElementById('btn-fb');
+        
         const register = document.getElementById('registrar-btn');
         
         register.addEventListener('click', () => location.hash = "#/inicio");
-
-        btnFb.addEventListener('click', sessionFb);
     }
 };
 

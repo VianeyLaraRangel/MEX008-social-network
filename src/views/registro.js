@@ -12,7 +12,7 @@ const registro = {
                 height="auto"><strong>Registrar con Google</strong></button>
                 <br>
                 <button type="button" class="btn btn-secondary"><img src="https://github.com/VianeyLaraRangel/MEX008-social-network/blob/master/src/img/facebookicon.png?raw=true" width="10%"
-                height="auto"><strong>Registrar con Facebook</strong> </button>
+                height="auto" id="btn-fb"><strong>Registrar con Facebook</strong> </button>
             </div>
             <div class="line-logo">
                 <hr class="decorate">
@@ -43,11 +43,15 @@ const registro = {
         const password = document.getElementById("password-form");
         const register = document.getElementById('registrar-btn');
         const botonGoogle = document.getElementById('btn-google');
+        //botonFB
+        const btnFb = document.getElementById('btn-fb');
         
         //Eventos
         register.addEventListener('click', () => registrar(email.value, password.value));
 
         botonGoogle.addEventListener('click', registerGmail);
+
+        btnFb.addEventListener('click', sessionFb);
     }
 };
 

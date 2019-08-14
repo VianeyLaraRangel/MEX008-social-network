@@ -1,0 +1,25 @@
+[debug] [2019-08-14T21:10:56.249Z] ----------------------------------------------------------------------
+[debug] [2019-08-14T21:10:56.252Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\viane_000\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve --host 0.0.0.0
+[debug] [2019-08-14T21:10:56.253Z] CLI Version:   7.2.2
+[debug] [2019-08-14T21:10:56.253Z] Platform:      win32
+[debug] [2019-08-14T21:10:56.253Z] Node Version:  v10.16.0
+[debug] [2019-08-14T21:10:56.254Z] Time:          Wed Aug 14 2019 16:10:56 GMT-0500 (GMT-05:00)
+[debug] [2019-08-14T21:10:56.254Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-08-14T21:10:56.265Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-08-14T21:10:56.266Z] > authorizing via signed-in user
+[debug] [2019-08-14T21:10:56.266Z] [iam] checking project hopaki-prueba for permissions ["firebase.projects.get"]
+[debug] [2019-08-14T21:10:56.269Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/hopaki-prueba:testIamPermissions  
+
+[debug] [2019-08-14T21:10:57.048Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-14T21:10:57.050Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/hopaki-prueba  
+ 
+[debug] [2019-08-14T21:11:00.705Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\LABORATORIA 2019\Proyecto4_Red_Social\MEX008-social-network'...
+[info] 
+[debug] [2019-08-14T21:11:00.717Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/hopaki-prueba/webApps/-/config  
+ 
+[debug] [2019-08-14T21:11:01.095Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: src/
+[info] +  hosting: Local server: http://0.0.0.0:5000
