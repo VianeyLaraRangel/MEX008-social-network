@@ -36,8 +36,6 @@ const sessionFb= () => {
     var credential = error.credential;
     // ...
   });
-
-
 }
           
 
