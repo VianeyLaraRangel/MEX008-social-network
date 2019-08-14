@@ -31,6 +31,7 @@ const router = async () => {
   let page = routes [parsedUrl] ? routes[parsedUrl] : error404;
   content.innerHTML = await page.render();
   await page.after_render();
+  
 }
 //llamando objeto y escuchando hash
 window.addEventListener('hashchange', router);
