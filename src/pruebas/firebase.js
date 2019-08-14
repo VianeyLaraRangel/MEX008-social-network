@@ -14,19 +14,36 @@
         if (errorCode === "auth/invalid-email") {
           alert('Correo inválido: Ingresa la dirección completa');
         } else if (errorCode === "auth/weak-password") {
+<<<<<<< HEAD
           alert('La constraseña debe tener 6 caracteres mínimo');
         } else if (errorCode === "auth/email-already-in-use") {
           alert('La dirección de correo electrónico ya fué registrada');
         }
       });
   };
+=======
+          alert('La contraseña debe tener 6 caracteres mínimo');
+        } else if (errorCode === "auth/email-already-in-use") {
+          alert('La dirección de correo electrónico ya fué registrada');
+        }
+      })
+  }
+>>>>>>> 0f86a51446f2b1f1ff90240081de44c2366a17c5
 
   const btnRegistrar = document.getElementById('registrar-btn').addEventListener('click', registrar);
 
 //Funcion para ingreso
+<<<<<<< HEAD
   function ingreso() {
     const email2= document.getElementById("email2").value;
     const password2= document.getElementById("password2").value;
+=======
+  const ingreso= () => {
+    const email2= document.getElementById("email2").value;
+    const password2= document.getElementById("password2").value;
+    
+
+>>>>>>> 0f86a51446f2b1f1ff90240081de44c2366a17c5
     firebase.auth().signInWithEmailAndPassword(email2, password2)
     .catch(function(error) {
         // Handle Errors here.
@@ -34,6 +51,7 @@
         const errorMessage = error.message;
         console.log(errorCode);
         console.log(errorMessage);
+<<<<<<< HEAD
       });
   }
 //Observador de la autenticación  
@@ -46,6 +64,33 @@
           const displayName = user.displayName;
           const email = user.email;
           console.log("user");
+=======
+
+        if (errorCode === "auth/invalid-email") {
+          alert('correo invalido. No es correcto o no has iniciado sesión');
+        } else if (errorCode === "auth/weak-password" || errorCode === "auth/wrong-password") {
+          alert('La contraseña es incorrecta, verificala');
+        } else if (errorCode === "auth/email-already-in-use") {
+          alert('La dirección de correo electrónico ya existe');
+        } else if ( errorCode === "auth/user-not-found") {
+          alert("Este usuario no existe, por favor registrate");
+        }
+      })
+  }
+  const btnInicioSesion = document.getElementById('btn-ingreso').addEventListener('click', ingreso);
+
+
+  //Observador de la autenticación  
+  const observador= () => {
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            console.log("existe usuario activo");
+            //aparece();
+          // User is signed in.
+          const displayName = user.displayName;
+          const email = user.email;
+          //console.log(user);
+>>>>>>> 0f86a51446f2b1f1ff90240081de44c2366a17c5
           const emailVerified = user.emailVerified;
           const photoURL = user.photoURL;
           const isAnonymous = user.isAnonymous;
@@ -61,7 +106,11 @@
   observador();
   
 
+<<<<<<< HEAD
   function cerrar() {
+=======
+  /*function cerrar() {
+>>>>>>> 0f86a51446f2b1f1ff90240081de44c2366a17c5
     firebase.auth().signOut()
     .then(function() {
         console.log("saliendo");
@@ -70,6 +119,7 @@
     .catch(function(error) {
         console.log(error);
     })
+<<<<<<< HEAD
   }
 
 
@@ -119,3 +169,6 @@ const registerGmail = () => {
 
 const botonGoogle = document.getElementById('btn-google').addEventListener('click', registerGmail);
 
+=======
+  } */
+>>>>>>> 0f86a51446f2b1f1ff90240081de44c2366a17c5
