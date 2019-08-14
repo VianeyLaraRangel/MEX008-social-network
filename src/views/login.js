@@ -1,6 +1,6 @@
 let login = {
-  render: async () => {
-    const view = `
+    render: async () => {
+        const view = `
             <header class="cabecera2">
                 <h1>Iniciar Sesión</h1>
             </header>
@@ -36,17 +36,18 @@ let login = {
             <button id="registrar-btn" class="btn-send btn">Enviar</button>
             </div>
             `;
-    return view;
-  },
+        return view;
+    },
 
-  after_render: async () => {
-      //botonFB
-      const btnFb= document.getElementById('btn-fb')
-      .addEventListener('click', sessionFb);
-
-    const register = document.getElementById('registrar-btn');
+    after_render: async () => {
+        //botonFB
+        const btnFb = document.getElementById('btn-fb');
+        const register = document.getElementById('registrar-btn');
+        
         register.addEventListener('click', () => location.hash = "#/inicio");
-  }
+
+        btnFb.addEventListener('click', sessionFb);
+    }
 };
 
 export default login;
