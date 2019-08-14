@@ -1,7 +1,7 @@
 const registro = {
-    render: async () => {
-        const view = `
-    <header class="cabecera">
+    render : async () => {
+    const view = 
+    `<header class="cabecera">
     <h1>Crear cuenta</h1>
     </header>
     <br>
@@ -19,31 +19,33 @@ const registro = {
         <img class="hopaki-pk" src="img/hopaki-pk.png" width="10%" height="auto">
         <hr class="decorate">
         </div>
- <div class="mail-pass">
+        <!--FORMULARIO EMAIL-->
+    <div class="mail-pass">
     <label for="email">Ingresa tu correo</label>
     <div class="input-group-prepend">
     <span class="input-group-text" id="basic-addon1">@</span>
-    <input type="text" class="form-control" placeholder="Ingresa tu correo" aria-label="Username" aria-describedby="basic-addon1">
+    <input type="text" class="form-control" placeholder="Ingresa tu correo" aria-label="Username" aria-describedby="basic-addon1" id="email-form"/>
     </div>
-    
+    <!--FORMULARIO CONTRASEÑA-->
     <label for="password">Crea una contraseña</label>
     <div class="input-group-prepend">
     <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
-    <input type="text" class="form-control" placeholder="Ingresa tu contraseña" aria-describedby="basic-addon1">
+    <input type="text" class="form-control" placeholder="Ingresa tu contraseña" aria-describedby="basic-addon1" id="password-form"/>
     </div>
     <br>
-    <button id="registrar-btn" class="btn-send btn">Enviar</button>
-    <br>
-    <p> ¿Ya tienes cuenta? Ingresa <a href="/src/index.html#/login" class="alert-link">Aquí</a>
+    <button id="registrar-btn" class="btn-send btn" href="#/inicio" >Enviar</button>
  </div>`
         return view
-
     },
 
-    after_render: async () => {
-        let register = document.getElementById('registrar-btn');
-        register.addEventListener('click', () => location.hash = "#/inicio");
-    }
+    after_render : async () => {
+        const email= document.getElementById("email-form");
+        console.log(email);
+        const password= document.getElementById("password-form");
+        console.log(password);
+        const register = document.getElementById('registrar-btn');
+        register.addEventListener('click', () => registrar(email.value, password.value));
+    } 
 };
 
 export default registro;
