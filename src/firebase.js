@@ -134,78 +134,39 @@ function cerrar() {
     })
 };
 
-//Inicializando firestore
-
+//imprimir publicacion
 const db= firebase.firestore();
 
+const publicar = () => {
+  const post= document.getElementById('publication-text').value;
+  console.log(post);
+  console.log(db.collection("dbhopaki"));
+  db.collection("dbhopaki").add( {
+    first: post
+  })
+  .then(function(docRef) {
+    console.log("Document written with ID: ", docRef.id);
 
-const publicacion = document.getElementById('publicacion').value;
-console.log
-const post= document.getElementById('text-feed');
+    document.getElementById('publication-text').value='';
+  })
+  .catch(function(error) {
+    console.error("Error adding document: ", error);
+  });
+};
+//leyendo datos
 
-//guardar datos
-const publicar =  () => {
- 
-  db.collection("bdhopaki").add( {
-   first: publicacion
- })
- .then(function(docRef) {
-   console.log("Document written with ID: ", docRef.id);
-   document.getElementById('publicacion').value='';
- })
- .catch(function(error) {
-   console.error("Error adding document: ", error);
- });
-}
-// leer datos
-
-db.collection("bdhopaki").onSnapshot((querySnapshot) => {
-  console.log(querySnapshot);
-  console.log(querySnapshot.doc);
- querySnapshot.forEach((doc) => {
-  //  console.log(querySnapshot.docs);
-
-     console.log(`${doc.data().first}`);
-     post.innerHTML += `<div class="feed">
-     <textarea id="content-post"  name="publicacion" rows="3" cols="40"></textarea>
-     <button id="btn-editar" class="bg-warning btn-lg">Editar</button>
-     <button id="btn-eliminar" class="bg-danger btn-lg">Eliminar</button>
-     </div>`
-     post.innerHTML='';
- });
+db.collection("dbhopaki").onSnapshot((querySnapshot) => {
+  const postArea= document.getElementById('post-area');
+  console.log(postArea);
+  postArea.innerHTML='';
+  querySnapshot.forEach((doc) => {
+      console.log(`${doc.data().first}`);
+      postArea.innerHTML += `<div>
+      
+      <p>${doc.data().first}</p>
+      <td><button class="btn btn-danger" onclick="eliminar('${doc.id}')">Eliminar</button></td>
+      <td><button class="btn btn-warning" onclick="editar('${doc.id}', '${doc.data().first}')">Editar</button></td>
+    </div>`
+  });
 });
-//borrar datos
-function eliminar(id) {
- db.collection("users").doc(id).delete().then(function() {
-   console.log("Document successfully deleted!");
- }).catch(function(error) {
-   console.error("Error removing document: ", error);
- });
-}
-//actualizar datos
-function editar(id, nombre, apellido, nacimiento) {
- document.getElementById('nombre').value = nombre;
- document.getElementById('apellido').value = apellido;
- document.getElementById('nacimiento').value = nacimiento;
- const boton= document.getElementById('boton');
- boton.innerHTML= Editar;
- boton.onclick=function () {
-   const washingtonRef = db.collection("users").doc(id);
-   const nombre = document.getElementById('nombre').value;
-   const apellido = document.getElementById('apellido').value;
-   const nacimiento = document.getElementById('nacimiento').value;
-   return washingtonRef.update({
-     first: nombre,
-     last: apellido,
-     born: nacimiento
-   })
-   .then(function() {
-       console.log("Document successfully updated!");
-       boton.innerHTML = Guardar;
-   })
-   .catch(function(error) {
-       // The document probably doesn't exist.
-       console.error("Error updating document: ", error);
-   });
-  }
-}
+

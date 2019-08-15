@@ -35,15 +35,17 @@ let inicio = {
 
 
 
-<div class="publicaciones">
-<textarea id="publicacion"  name="publicacion" rows="3" cols="40" placeholder="¿Qué vas a compartir hoy?"></textarea>
-<button id="btn-publicar" class="bg-primary btn-lg">Publicar</button>
-</div> 
-<div id="text-feed"></div>`
+<div class="publication-box">
+<textarea id="publication-text" name="publicacion" rows="3" cols="40" placeholder="¿Qué vas a compartir hoy?"></textarea>
+<button id="btn-publication" class="bg-warning btn-lg">Publicar</button>
+</section>
+
+<section id="post-area" class="feeds">texto</section>`
 
         return view;
     },
     after_render : async () => {
+      const btnPublicar= document.getElementById('btn-publication').addEventListener('click', publicar);
         const btnPerfil= document.getElementById('img-avatar').addEventListener('click', ()=>{
           location.hash= "#/perfil";
           //botones publicacion
