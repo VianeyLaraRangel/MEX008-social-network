@@ -1,23 +1,9 @@
 const registro = {
-<<<<<<< HEAD
-    render : async () => {
-    const view = 
-    `<header class="cabecera">
-    <h1>Crear cuenta</h1>
-    </header>
-    <br>
-        <div class="registrar-box boxData">
-             <h6>Puedes registrarte con las siguientes redes sociales:</h6>
-             <br>
-            <button type="button" class="btn btn-secondary id="btn-google""><img src="img/googleicon.png" width="10%"
-            height="auto"><strong>Registrar con Google</strong></button>
-=======
     render: async () => {
         const view =
             `<header class="cabecera">
             <h1>Crear cuenta</h1>
             </header>
->>>>>>> 0f86a51446f2b1f1ff90240081de44c2366a17c5
             <br>
             <div class="registrar-box boxData">
                 <h6>Puedes registrarte con las siguientes redes sociales:</h6>
