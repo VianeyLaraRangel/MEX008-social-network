@@ -1,21 +1,19 @@
-//Este archivo es la entrada de la aplicación
-// "use strict";
 //Importar los archivos JS que imprimiran las pantallas
-import intro  from './views/intro.js';
-import login  from './views/login.js';
+import intro from './views/intro.js';
+import login from './views/login.js';
 import Utils from './views/parsedRequestURL.js';
 import perfil from './views/perfil.js';
 import registro from './views/registro.js';
 import inicio from './views/inicio.js';
 
-//Crear un objeto que contenga las rutas como llaves y su valor (List of supported routes)
+//Crear un objeto que contenga las rutas
 
 const routes = {
-    '/': intro,
-    '/login': login,
-    '/perfil' : perfil,
-    '/registro' : registro,
-    '/inicio' : inicio
+  '/': intro,
+  '/login': login,
+  '/perfil': perfil,
+  '/registro': registro,
+  '/inicio': inicio
 };
 
 //Aquí el controlador de las rutas, esté comparará contra las rutas definidas y direccionará.
@@ -23,11 +21,11 @@ const routes = {
 const router = async () => {
   const content = null || document.getElementById('content');
   const request = Utils.parsedRequestUrl();
-  
+
   const parsedUrl = (request.resource ? '/' + request.resource : '/')
-  + (request.id ? '/:id' : '') + (request.verb ? '/' + request.verb : '');
+    + (request.id ? '/:id' : '') + (request.verb ? '/' + request.verb : '');
   //Obtener la página desde el hash
-  let page = routes [parsedUrl] ? routes[parsedUrl] : error404;
+  let page = routes[parsedUrl] ? routes[parsedUrl] : error404;
   content.innerHTML = await page.render();
   await page.after_render();
 
