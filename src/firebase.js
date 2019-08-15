@@ -4,7 +4,7 @@ const firebaseConfig = {
   authDomain: "hopaki-prueba.firebaseapp.com",
   databaseURL: "https://hopaki-prueba.firebaseio.com",
   projectId: "hopaki-prueba",
-  storageBucket: "",
+  storageBucket: "hopaki-prueba.appspot.com",
   messagingSenderId: "967562359456",
   appId: "1:967562359456:web:8517811f94b84354"
 };
@@ -133,3 +133,79 @@ function cerrar() {
       console.log(error);
     })
 };
+
+//Inicializando firestore
+
+const db= firebase.firestore();
+
+
+const publicacion = document.getElementById('publicacion').value;
+console.log
+const post= document.getElementById('text-feed');
+
+//guardar datos
+const publicar =  () => {
+ 
+  db.collection("bdhopaki").add( {
+   first: publicacion
+ })
+ .then(function(docRef) {
+   console.log("Document written with ID: ", docRef.id);
+   document.getElementById('publicacion').value='';
+ })
+ .catch(function(error) {
+   console.error("Error adding document: ", error);
+ });
+}
+// leer datos
+
+db.collection("bdhopaki").onSnapshot((querySnapshot) => {
+  console.log(querySnapshot);
+  console.log(querySnapshot.doc);
+ querySnapshot.forEach((doc) => {
+  //  console.log(querySnapshot.docs);
+
+     console.log(`${doc.data().first}`);
+     post.innerHTML += `<div class="feed">
+     <textarea id="content-post"  name="publicacion" rows="3" cols="40"></textarea>
+     <button id="btn-editar" class="bg-warning btn-lg">Editar</button>
+     <button id="btn-eliminar" class="bg-danger btn-lg">Eliminar</button>
+     </div>`
+     post.innerHTML='';
+ });
+});
+//borrar datos
+function eliminar(id) {
+ db.collection("users").doc(id).delete().then(function() {
+   console.log("Document successfully deleted!");
+ }).catch(function(error) {
+   console.error("Error removing document: ", error);
+ });
+}
+//actualizar datos
+function editar(id, nombre, apellido, nacimiento) {
+ document.getElementById('nombre').value = nombre;
+ document.getElementById('apellido').value = apellido;
+ document.getElementById('nacimiento').value = nacimiento;
+ const boton= document.getElementById('boton');
+ boton.innerHTML= Editar;
+ boton.onclick=function () {
+   const washingtonRef = db.collection("users").doc(id);
+   const nombre = document.getElementById('nombre').value;
+   const apellido = document.getElementById('apellido').value;
+   const nacimiento = document.getElementById('nacimiento').value;
+   return washingtonRef.update({
+     first: nombre,
+     last: apellido,
+     born: nacimiento
+   })
+   .then(function() {
+       console.log("Document successfully updated!");
+       boton.innerHTML = Guardar;
+   })
+   .catch(function(error) {
+       // The document probably doesn't exist.
+       console.error("Error updating document: ", error);
+   });
+  }
+}
