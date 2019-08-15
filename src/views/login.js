@@ -12,7 +12,7 @@ let login = {
                 <button type="button" class="btn btn-secondary"><img src="https://github.com/VianeyLaraRangel/MEX008-social-network/blob/master/src/img/googleicon.png?raw=true" width="10%"
                 height="auto"><strong>Entrar con Google</strong></button> 
             <br>
-                <button type="button" id="btn-fb" class="btn btn-secondary"><img src="https://github.com/VianeyLaraRangel/MEX008-social-network/blob/master/src/img/facebookicon.png?raw=true" width="10%"
+                <button type="button" class="btn btn-secondary"><img src="https://github.com/VianeyLaraRangel/MEX008-social-network/blob/master/src/img/facebookicon.png?raw=true" width="10%"
                  height="auto"><strong>Entrar con Facebook</strong> </button>
             </div>
             
