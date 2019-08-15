@@ -11,34 +11,6 @@ const firebaseConfig = {
 // Inicializando Firebase
 firebase.initializeApp(firebaseConfig);
 
-//registro por medio de fb
-const sessionFb= () => {
-  //agregamos la instancia de objeto de proveedor de FB
-  const provider = new firebase.auth.FacebookAuthProvider();
-  //acceder con su cuenta, por medio de un popup
-  firebase.auth().signInWithPopup(provider).then(function(result) {
-      alert('exito');
-      console.log('result');
-    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-    var token = result.credential.accessToken;
-    // The signed-in user info.
-    var user = result.user;
-    // ...
-  }).catch(function(error) {
-      alert('error');
-      console.log(error);
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // The email of the user's account used.
-    var email = error.email;
-    // The firebase.auth.AuthCredential type that was used.
-    var credential = error.credential;
-    // ...
-  });
-}
-          
-
 //Función registrar usuario con correo y contraseña
 const registrar = (email, password) => {
   firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -59,6 +31,33 @@ const registrar = (email, password) => {
     });
   location.hash = "#/inicio"
 };
+
+//Registro con FB
+const registerFb = () => {
+  //agregamos la instancia de objeto de proveedor de FB
+  const provider = new firebase.auth.FacebookAuthProvider();
+  //acceder con su cuenta, por medio de un popup
+  firebase.auth().signInWithPopup(provider).then(function (result) {
+    alert('exito');
+    console.log('result');
+    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+    var token = result.credential.accessToken;
+    // The signed-in user info.
+    var user = result.user;
+    // ...
+  }).catch(function (error) {
+    alert('error');
+    console.log(error);
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // The email of the user's account used.
+    var email = error.email;
+    // The firebase.auth.AuthCredential type that was used.
+    var credential = error.credential;
+    // ...
+  });
+}
 
 //Registro con google
 const registerGmail = () => {
@@ -102,7 +101,6 @@ function ingreso() {
     });
 }
 
-
 //Observador de la autenticación  
 const observador = () => {
   firebase.auth().onAuthStateChanged((user) => {
@@ -126,8 +124,6 @@ const observador = () => {
   });
 };
 
-
-
 function cerrar() {
   firebase.auth().signOut()
     .then(function () {
@@ -138,13 +134,39 @@ function cerrar() {
     })
 };
 
-function cerrar() {
-  firebase.auth().signOut()
-    .then(function () {
-      console.log("saliendo");
+//imprimir publicacion
+const db= firebase.firestore();
 
-    })
-    .catch(function (error) {
-      console.log(error);
-    })
-}
+const publicar = () => {
+  const post= document.getElementById('publication-text').value;
+  console.log(post);
+  console.log(db.collection("dbhopaki"));
+  db.collection("dbhopaki").add( {
+    first: post
+  })
+  .then(function(docRef) {
+    console.log("Document written with ID: ", docRef.id);
+
+    document.getElementById('publication-text').value='';
+  })
+  .catch(function(error) {
+    console.error("Error adding document: ", error);
+  });
+};
+//leyendo datos
+
+db.collection("dbhopaki").onSnapshot((querySnapshot) => {
+  const postArea= document.getElementById('post-area');
+  console.log(postArea);
+  postArea.innerHTML='';
+  querySnapshot.forEach((doc) => {
+      console.log(`${doc.data().first}`);
+      postArea.innerHTML += `<div>
+      
+      <p>${doc.data().first}</p>
+      <td><button class="btn btn-danger" onclick="eliminar('${doc.id}')">Eliminar</button></td>
+      <td><button class="btn btn-warning" onclick="editar('${doc.id}', '${doc.data().first}')">Editar</button></td>
+    </div>`
+  });
+});
+
