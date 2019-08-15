@@ -134,3 +134,40 @@ function cerrar() {
       console.log(error);
     })
 };
+
+//imprimir publicacion
+const db= firebase.firestore();
+
+const publicar = () => {
+  const post= document.getElementById('publication-text').value;
+  console.log(post);
+  console.log(db.collection("dbhopaki"));
+  db.collection("dbhopaki").add( {
+    first: post
+  })
+  .then(function(docRef) {
+    console.log("Document written with ID: ", docRef.id);
+
+    document.getElementById('publication-text').value='';
+  })
+  .catch(function(error) {
+    console.error("Error adding document: ", error);
+  });
+};
+//leyendo datos
+
+db.collection("dbhopaki").onSnapshot((querySnapshot) => {
+  const postArea= document.getElementById('post-area');
+  console.log(postArea);
+  postArea.innerHTML='';
+  querySnapshot.forEach((doc) => {
+      console.log(`${doc.data().first}`);
+      postArea.innerHTML += `<div>
+      
+      <p>${doc.data().first}</p>
+      <td><button class="btn btn-danger" onclick="eliminar('${doc.id}')">Eliminar</button></td>
+      <td><button class="btn btn-warning" onclick="editar('${doc.id}', '${doc.data().first}')">Editar</button></td>
+    </div>`
+  });
+});
+
