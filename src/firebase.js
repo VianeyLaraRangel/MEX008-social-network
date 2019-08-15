@@ -4,7 +4,7 @@ const firebaseConfig = {
   authDomain: "hopaki-prueba.firebaseapp.com",
   databaseURL: "https://hopaki-prueba.firebaseio.com",
   projectId: "hopaki-prueba",
-  storageBucket: "",
+  storageBucket: "hopaki-prueba.appspot.com",
   messagingSenderId: "967562359456",
   appId: "1:967562359456:web:8517811f94b84354"
 };
