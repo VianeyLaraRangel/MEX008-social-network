@@ -9,7 +9,7 @@ let intro = {
             <div class="card-body">
               <h1 class="title1">Academia HOPAKI</h1>
               <h3>(Home, Parents, Kids)</h3>
-              <img src="src/img/hopaki-triada.png" class="card-img-top" alt="logo-hopaki-responsive">
+              <img src="https://github.com/VianeyLaraRangel/MEX008-social-network/blob/master/src/img/hopaki-triada.png?raw=true" class="card-img-top" alt="logo-hopaki-responsive">
               <h4 class="card-text">Es una red social dedicada a aquellos padres que por diversos motivos han decidido
                 educar
                 a sus hijos en casa, enfocada a compartir materiales y también a la comunicación.</h4>
