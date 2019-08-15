@@ -43,15 +43,14 @@ const registro = {
         const password = document.getElementById("password-form");
         const register = document.getElementById('registrar-btn');
         const botonGoogle = document.getElementById('btn-google');
-        //botonFB
-        const btnFb = document.getElementById('btn-fb');
+        const botonFb = document.getElementById('btn-fb');
         
         //Eventos
         register.addEventListener('click', () => registrar(email.value, password.value));
 
         botonGoogle.addEventListener('click', registerGmail);
 
-        btnFb.addEventListener('click', sessionFb);
+        botonFb.addEventListener('click', registerFb);
     }
 };
 
