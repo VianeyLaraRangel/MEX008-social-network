@@ -200,3 +200,5 @@ const printPosts = () => {
 
 //borrar publicación
 //const btnEliminar = document.getElementById('btn-eliminar');
+
+//comentario
