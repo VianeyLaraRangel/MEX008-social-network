@@ -35,19 +35,17 @@ let inicio = {
 
 
 
-<section class="publicaciones">
-<textarea name="publicacion" rows="3" cols="40">¿Qué vas a compartir hoy?</textarea>
-<button id="btn-publicar" class="bg-warning btn-lg">Publicar</button>
+<div class="publication-box">
+<textarea id="publication-text" name="publicacion" rows="3" cols="40" placeholder="¿Qué vas a compartir hoy?"></textarea>
+<button id="btn-publication" class="bg-warning btn-lg">Publicar</button>
 </section>
 
-<section class="feeds">
-<textarea name="one-feed" rows="3" cols="40">esto es una publicación</textarea>
-<button id="btn-publicar" class="bg-warning btn-lg">Publicar</button>
-</section>`
+<section id="post-area" class="feeds">texto</section>`
 
         return view;
     },
     after_render : async () => {
+      const btnPublicar= document.getElementById('btn-publication').addEventListener('click', publicar);
         const btnPerfil= document.getElementById('img-avatar').addEventListener('click', ()=>{
           location.hash= "#/perfil";
         })
