@@ -154,9 +154,13 @@ h5 {
 }
 
 .tablero {
-  box-sizing: border-box;
-    width: 60%;
-    background: #008F95; 
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  align-content: center;
+  align-items: center;
+    width: 100%
 }
 
 
@@ -176,3 +180,26 @@ h5 {
   margin-right: auto;
 }
 
+.fa-bell {
+  color: #e9b000;
+}
+
+.navbar {
+  background-color: #e24e42 !important;
+}
+
+.navbar2 {
+  background-color: #e9b000 !important;
+}
+
+.btn-publication {
+  border-radius: 0px;
+}
+
+.fa-bell2 {
+  color: #e24e42;
+}
+
+.card-header {
+  align-content: space-between;
+}

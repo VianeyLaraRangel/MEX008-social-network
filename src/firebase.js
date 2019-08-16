@@ -184,11 +184,18 @@ const printPosts = () => {
 					});
 			};
 			console.log(`${doc.data().first}`);
-			postArea.innerHTML += ` <br> <br><div class="col-12 data-box">
-        <p>${doc.data().first}</p>
-        <td><button class="btn btn-danger" id="btn-eliminar">Eliminar</button></td>
-        <td><button class="btn btn-warning"  id="btn-editar">Editar</button></td>
-        </div>`;
+			postArea.innerHTML += ` <form>
+			<div class="form-group">
+			<textarea class="form-control" id="publication-text" rows="3" placeholder= "¿Que vas a compartir hoy?">${doc.data().first}</textarea>
+				<div class="btn-group btn-group-toggle" data-toggle="buttons">
+					<label class="btn btn-danger active" id="btn-eliminar">
+						<p>Eliminar </p>
+					</label>
+					<label class="btn btn-warning" id="btn-editar">
+						<p> Editar </p>
+					</label>
+				</div>
+		</form>`;
 			const btnEliminar = document.getElementById('btn-eliminar');
 			btnEliminar.addEventListener('click', () => borrarPublicacion(doc.id));
 		});
