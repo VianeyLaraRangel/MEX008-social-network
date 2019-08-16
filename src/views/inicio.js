@@ -36,8 +36,11 @@ let inicio = {
 
 
 <div class="publication-box">
-<textarea id="publication-text" name="publicacion" rows="3" cols="40" placeholder="¿Qué vas a compartir hoy?"></textarea>
-<button id="btn-publication" class="bg-warning btn-lg">Publicar</button>
+<textarea id="publication-text" 
+name="publicacion" rows="3" cols="40" 
+placeholder="¿Qué vas a compartir hoy?"></textarea>
+<button id="btn-publication" 
+class="bg-warning btn-lg">Publicar</button>
 </section>
 
 <section id="post-area" class="feeds">texto</section>`
