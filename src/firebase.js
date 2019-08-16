@@ -1,12 +1,12 @@
 //Integrando configuracion de proyecto en firebase
 const firebaseConfig = {
-	apiKey: 'AIzaSyAfAooPNMQOUS3UMPcAUDQHBXM64dAuBK0',
-	authDomain: 'hopaki-prueba.firebaseapp.com',
-	databaseURL: 'https://hopaki-prueba.firebaseio.com',
-	projectId: 'hopaki-prueba',
-	storageBucket: '',
-	messagingSenderId: '967562359456',
-	appId: '1:967562359456:web:8517811f94b84354',
+  apiKey: "AIzaSyAfAooPNMQOUS3UMPcAUDQHBXM64dAuBK0",
+  authDomain: "hopaki-prueba.firebaseapp.com",
+  databaseURL: "https://hopaki-prueba.firebaseio.com",
+  projectId: "hopaki-prueba",
+  storageBucket: "hopaki-prueba.appspot.com",
+  messagingSenderId: "967562359456",
+  appId: "1:967562359456:web:8517811f94b84354"
 };
 // Inicializando Firebase
 firebase.initializeApp(firebaseConfig);
@@ -184,11 +184,18 @@ const printPosts = () => {
 					});
 			};
 			console.log(`${doc.data().first}`);
-			postArea.innerHTML += ` <br> <br><div class="col-12 data-box">
-        <p>${doc.data().first}</p>
-        <td><button class="btn btn-danger" id="btn-eliminar">Eliminar</button></td>
-        <td><button class="btn btn-warning"  id="btn-editar">Editar</button></td>
-        </div>`;
+			postArea.innerHTML += ` <form>
+			<div class="form-group">
+			<textarea class="form-control" id="publication-text" rows="3" placeholder= "¿Que vas a compartir hoy?">${doc.data().first}</textarea>
+				<div class="btn-group btn-group-toggle" data-toggle="buttons">
+					<label class="btn btn-danger active" id="btn-eliminar">
+						<p>Eliminar </p>
+					</label>
+					<label class="btn btn-warning" id="btn-editar">
+						<p> Editar </p>
+					</label>
+				</div>
+		</form>`;
 			const btnEliminar = document.getElementById('btn-eliminar');
 			btnEliminar.addEventListener('click', () => borrarPublicacion(doc.id));
 		});
@@ -197,3 +204,4 @@ const printPosts = () => {
 
 //borrar publicación
 //const btnEliminar = document.getElementById('btn-eliminar');
+
