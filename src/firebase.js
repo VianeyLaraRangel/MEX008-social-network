@@ -186,19 +186,16 @@ const printPosts = () => {
 						console.error('Error removing document: ', error);
 					});
 			};
-			console.log(`${doc.data().first}`);
+      console.log(`${doc.id}`,`${doc.data().first}`);
 			postArea.innerHTML += ` <br> <br><div class="col-12 data-box">
         <p>${doc.data().first}</p>
         <td><button class="btn btn-danger" id="btn-eliminar">Eliminar</button></td>
         <td><button class="btn btn-warning"  id="btn-editar">Editar</button></td>
         </div>`;
-			const btnEliminar = document.getElementById('btn-eliminar');
-			btnEliminar.addEventListener('click', () => borrarPublicacion(doc.id));
+      // const btnEliminar = document.getElementById('btn-eliminar');
+      const btnEliminar = document.querySelector('#btn-eliminar');
+      console.log(btnEliminar);
+      btnEliminar.addEventListener('click', () => borrarPublicacion(doc.id));
 		});
 	});
 };
-
-//borrar publicación
-//const btnEliminar = document.getElementById('btn-eliminar');
-
-//comentario

@@ -42,6 +42,7 @@ let inicio = {
 
 <section id="post-area" class="feeds">texto</section>`
 
+
         return view;
     },
     after_render : async () => {
