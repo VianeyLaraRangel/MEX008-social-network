@@ -45,6 +45,7 @@ let inicio = {
         return view;
     },
     after_render : async () => {
+      printPosts();
       const btnPublicar= document.getElementById('btn-publication').addEventListener('click', publicar);
         const btnPerfil= document.getElementById('img-avatar').addEventListener('click', ()=>{
           location.hash= "#/perfil";
@@ -53,4 +54,5 @@ let inicio = {
 
 };
     export default inicio;
+
     

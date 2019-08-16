@@ -30,7 +30,7 @@
 }
 
 .btn-principal {
-  width: 20%;
+  width: 150px;
   font-size: 18px;
   margin: 10px;
 }
@@ -167,5 +167,12 @@ h5 {
 }
 
 
-
+#post-area {
+  width: 50%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+}
 
