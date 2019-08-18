@@ -1,12 +1,12 @@
 //Integrando configuracion de proyecto en firebase
 const firebaseConfig = {
-  apiKey: 'AIzaSyAfAooPNMQOUS3UMPcAUDQHBXM64dAuBK0',
-  authDomain: 'hopaki-prueba.firebaseapp.com',
-  databaseURL: 'https://hopaki-prueba.firebaseio.com',
-  projectId: 'hopaki-prueba',
-  storageBucket: '',
-  messagingSenderId: '967562359456',
-  appId: '1:967562359456:web:8517811f94b84354',
+  apiKey: "AIzaSyAfAooPNMQOUS3UMPcAUDQHBXM64dAuBK0",
+  authDomain: "hopaki-prueba.firebaseapp.com",
+  databaseURL: "https://hopaki-prueba.firebaseio.com",
+  projectId: "hopaki-prueba",
+  storageBucket: "hopaki-prueba.appspot.com",
+  messagingSenderId: "967562359456",
+  appId: "1:967562359456:web:8517811f94b84354"
 };
 // Inicializando Firebase
 firebase.initializeApp(firebaseConfig);
@@ -197,3 +197,4 @@ const printPosts = () => {
 
 //borrar publicación
 //const btnEliminar = document.getElementById('btn-eliminar');
+
