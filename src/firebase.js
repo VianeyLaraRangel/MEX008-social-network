@@ -23,9 +23,19 @@ const register = (email, password) => {
     alert('¡No olvides ingresar un correo electrónico válido!');
   }
   firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
-    alert('¡Se enviará un mensaje de verificacion a tu dirección de correo electronico!');
+    
     location.hash = '#/login';
-    cerrarSesion();
+    
+    const user = firebase.auth().currentUser;
+    console.log(user);
+    user.sendEmailVerification()
+    .then( () => {
+      alert('¡Se enviará un mensaje de verificacion a tu dirección de correo electronico!');
+      // Email sent.
+      cerrarSesion();
+    }).catch(function (error) {
+      // An error happened.
+    });
   })
     .catch(error => {
       // Handle Errors here.
@@ -52,7 +62,7 @@ const loginUser = (loginEmail, loginPassword) => {
   if (loginEmail === '') {
     alert('¡Recuerda ingresar el correo con el que te registraste!');
   }
-  firebase.auth().signInWithEmailAndPassword(loginEmail,loginPassword)
+  firebase.auth().signInWithEmailAndPassword(loginEmail, loginPassword)
     .then(() => {
       location.hash = "#/inicio";
     })
@@ -117,7 +127,7 @@ const registerGmail = () => {
       console.log(user);
       console.log('Como que quiere');
       location.hash = "#/inicio";
-      
+
     })
     .catch(function (error) {
       // Handle Errors here.
