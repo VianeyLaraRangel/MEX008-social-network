@@ -115,7 +115,7 @@ const registerGmail = () => {
       // The signed-in user info.
       const user = result.user;
       console.log(user);
-      if (user) {
+      if (user.email) {
         location.hash = "#/inicio";
         console.log('Si quiere');
       }
