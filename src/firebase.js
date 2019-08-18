@@ -137,7 +137,7 @@ const registerFb = () => {
 const cerrarSesion = (user) => {
   firebase.auth().signOut()
     .then(() => {
-      console.log('saliendo');
+      alert('Cerrando sesión. ¡Vuelve pronto!');
       location.hash = "#/intro";
     })
     .catch((error) => {
