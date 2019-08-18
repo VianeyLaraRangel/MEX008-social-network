@@ -30,7 +30,7 @@ const registro = {
                 <label for="password">Crea una contraseña</label>
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
-                    <input type="text" class="form-control" placeholder="Ingresa tu contraseña" aria-describedby="basic-addon1" id="password-form"/>
+                    <input type="password" class="form-control" placeholder="Ingresa tu contraseña" aria-describedby="basic-addon1" id="password-form"/>
                 </div>
                 <br>
                 <button id="registrar-btn" class="btn-send btn" >Enviar</button>

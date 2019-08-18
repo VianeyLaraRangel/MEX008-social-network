@@ -116,10 +116,8 @@ const registerGmail = () => {
       const user = result.user;
       console.log(user);
       console.log('Como que quiere');
-      if (user.email) {
-        location.hash = "#/inicio";
-        console.log('Si quiere');
-      }
+      location.hash = "#/inicio";
+      
     })
     .catch(function (error) {
       // Handle Errors here.

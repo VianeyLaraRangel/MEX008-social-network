@@ -37,26 +37,27 @@ window.addEventListener('hashchange', router);
 window.addEventListener('load', router);
 
 //Observador de la autenticación
-const observador = () => {
-  firebase.auth().onAuthStateChanged(user => {
-    if (user) {
-      console.log('existe usuario activo');
-      //User is signed in.
-      const displayName = user.displayName;
-      const email = user.email; 
-      console.log(user.email);
-      const emailVerified = user.emailVerified;
-      const photoURL = user.photoURL;
-      const isAnonymous = user.isAnonymous;
-      const uid = user.uid;
-      const providerData = user.providerData;
-    } else {
-      //User is signed out.
-      console.log('no existe usuario activo');
-      cerrarSesion();
-    }
-  });
-};
+// const observador = () => {
+//   firebase.auth().onAuthStateChanged(user => {
+//     if (user) {
+//       console.log('existe usuario activo');
+//       //User is signed in.
+//       const displayName = user.displayName;
+//       const email = user.email; 
+//       console.log(user.email);
+//       const emailVerified = user.emailVerified;
+//       const photoURL = user.photoURL;
+//       const isAnonymous = user.isAnonymous;
+//       const uid = user.uid;
+//       const providerData = user.providerData;
+//       location.hash = "#/inicio";
+//     } else {
+//       //User is signed out.
+//       console.log('no existe usuario activo');
+//       cerrarSesion();
+//     }
+//   });
+// };
 
-observador();
+// observador();
 
