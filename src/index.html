@@ -14,8 +14,8 @@
   <script src="https://kit.fontawesome.com/305f8c7f10.js"></script>
 
   <!--Enlace a hojas de CSS-->
-  <link rel="stylesheet" href="./style.css">
-  <link rel="stylesheet" href="./media.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="media.css">
   <title>HOPAKI</title>
   
   <!--Añadiendo firebase app y auth-->
@@ -25,26 +25,22 @@
   <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
   
   <!-- include only the Firebase features as you need -->
-  <script defer src="/__/firebase/6.3.5/firebase-auth.js"></script>
-  <script defer src="/__/firebase/6.3.5/firebase-database.js"></script>
-  <script defer src="/__/firebase/6.3.5/firebase-messaging.js"></script>
-  <script defer src="/__/firebase/6.3.5/firebase-storage.js"></script>
+  <script defer src="firebase/6.3.5/firebase-auth.js"></script>
+  <script defer src="firebase/6.3.5/firebase-database.js"></script>
+  <script defer src="firebase/6.3.5/firebase-messaging.js"></script>
+  <script defer src="firebase/6.3.5/firebase-storage.js"></script>
   <!-- initialize the SDK after all desired features are loaded -->
-  <script defer src="/__/firebase/init.js"></script>
+  <script defer src="firebase/init.js"></script>
 
 </head>
 
 <body>
 
-  <!-- <div class="header-content"></div> -->
-
   <div class="content" id="content"></div>
 
-  <!-- <div class="footer-content"></div> -->
-
   <!--Enlaces javascript-->
-  <script type="module" src="./main.js"></script>
-  <script src="./firebase.js"></script>
+  <script type="module" src="main.js"></script>
+  <script src="firebase.js"></script>
 
   <!-- Añadiendo enlaces a Bootstrap-->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
