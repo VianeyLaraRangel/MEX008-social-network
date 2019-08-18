@@ -1,11 +1,11 @@
-let inicio = { 
-    render : async () => {
-        const view = 
+let inicio = {
+  render: async () => {
+    const view =
 
-        `<nav class="navbar navbar-expand-sm bg-danger navbar-dark text-white">
+      `<nav class="navbar navbar-expand-sm bg-danger navbar-dark text-white">
          <!-- Brand/logo -->
   <a class="navbar-brand">
-    <img src="src/img/avatar.jpg" alt="avatar" style="width:90px;" id="img-avatar">
+    <img src="https://github.com/VianeyLaraRangel/MEX008-social-network/blob/master/src/img/avatar.jpg?raw=true" alt="avatar" style="width:90px;" id="img-avatar">
   </a>
   
   <!-- Links -->
@@ -42,17 +42,20 @@ let inicio = {
 
 <section id="post-area" class="feeds">texto</section>`
 
-        return view;
-    },
-    after_render : async () => {
-      printPosts();
-      const btnPublicar= document.getElementById('btn-publication').addEventListener('click', publicar);
-        const btnPerfil= document.getElementById('img-avatar').addEventListener('click', ()=>{
-          location.hash= "#/perfil";
-        })
-    }
+    return view;
+  },
+
+  after_render: async () => {
+    printPosts();
+    const btnPublicar = document.getElementById('btn-publication');
+    const btnPerfil = document.getElementById('img-avatar');
+
+    btnPublicar.addEventListener('click', posting);
+    btnPerfil.addEventListener('click', () => {
+      location.hash = "#/perfil";
+    })
+  }
 
 };
-    export default inicio;
+export default inicio;
 
-    

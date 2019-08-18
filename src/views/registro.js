@@ -33,7 +33,9 @@ const registro = {
                     <input type="text" class="form-control" placeholder="Ingresa tu contraseña" aria-describedby="basic-addon1" id="password-form"/>
                 </div>
                 <br>
-                <button id="registrar-btn" class="btn-send btn" href="#/inicio" >Enviar</button>
+                <button id="registrar-btn" class="btn-send btn" >Enviar</button>
+                <!--Prueba cerrar sesion-->
+                <button id="cerrar-btn" class="btn-send btn" >Cerrar sesión</button>
             </div>`
         return view
     },
@@ -41,16 +43,21 @@ const registro = {
     after_render: async () => {
         const email = document.getElementById("email-form");
         const password = document.getElementById("password-form");
-        const register = document.getElementById('registrar-btn');
+        const registerBtn = document.getElementById('registrar-btn');
         const botonGoogle = document.getElementById('btn-google');
         const botonFb = document.getElementById('btn-fb');
         
+        const botonCerrarSesión = document.getElementById('cerrar-btn');
+         
         //Eventos
-        register.addEventListener('click', () => registrar(email.value, password.value));
+        registerBtn.addEventListener('click', () => register(email.value, password.value)
+        );
 
         botonGoogle.addEventListener('click', registerGmail);
 
         botonFb.addEventListener('click', registerFb);
+        
+        botonCerrarSesión.addEventListener('click',cerrarSesion);
     }
 };
 

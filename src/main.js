@@ -9,11 +9,13 @@ import inicio from './views/inicio.js';
 //Crear un objeto que contenga las rutas
 
 const routes = {
+  //Rutas públicas
   '/': intro,
   '/login': login,
-  '/perfil': perfil,
   '/registro': registro,
-  '/inicio': inicio
+  //Rutas privadas
+  '/inicio': inicio,
+  '/perfil': perfil
 };
 
 //Aquí el controlador de las rutas, esté comparará contra las rutas definidas y direccionará.
@@ -28,10 +30,33 @@ const router = async () => {
   let page = routes[parsedUrl] ? routes[parsedUrl] : error404;
   content.innerHTML = await page.render();
   await page.after_render();
-
 }
+
 //llamando objeto y escuchando hash
 window.addEventListener('hashchange', router);
 window.addEventListener('load', router);
 
+//Observador de la autenticación
+const observador = () => {
+  firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+      console.log('existe usuario activo');
+      //User is signed in.
+      const displayName = user.displayName;
+      const email = user.email; 
+      console.log(user.email);
+      const emailVerified = user.emailVerified;
+      const photoURL = user.photoURL;
+      const isAnonymous = user.isAnonymous;
+      const uid = user.uid;
+      const providerData = user.providerData;
+    } else {
+      //User is signed out.
+      console.log('no existe usuario activo');
+      cerrarSesion();
+    }
+  });
+};
+
+observador();
 
