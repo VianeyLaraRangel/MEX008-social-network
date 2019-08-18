@@ -2,7 +2,7 @@ let inicio = {
     render : async () => {
         const view = 
         ` <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#"><img src="img/avatar.jpg" alt="avatar" style="width:90px;" id="img-avatar"></a>
+        <a class="navbar-brand"><img src="img/avatar.jpg" alt="avatar" style="width:90px;" id="img-avatar"></a>
         <p>Hola usuario!! </p>  <i class="fas fa-bell"></i>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

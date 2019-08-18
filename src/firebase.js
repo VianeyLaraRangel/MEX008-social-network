@@ -22,7 +22,7 @@ const register = (email, password) => {
   if (email === '') {
     alert('¡No olvides ingresar un correo electrónico válido!');
   }
-  firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
+  firebase.auth().createUserWithEmailAndPassword(email, password).then((  ) => {
     
     location.hash = '#/login';
     
@@ -83,38 +83,8 @@ const loginUser = (loginEmail, loginPassword) => {
     });
 };
 
-
-//Registro con FB
-const registerFb = () => {
-  //agregamos la instancia de objeto de proveedor de FB
-  const provider = new firebase.auth.FacebookAuthProvider();
-  //acceder con su cuenta, por medio de un popup
-  firebase.auth().signInWithPopup(provider)
-    .then(function (result) {
-      alert('exito');
-      console.log('result');
-      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-      var token = result.credential.accessToken;
-      // The signed-in user info.
-      var user = result.user;
-      // ...
-    }).catch(function (error) {
-      alert('error');
-      console.log(error);
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // The email of the user's account used.
-      var email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
-      // ...
-    });
-}
-
 //Registro con google
 const registerGmail = () => {
-  //crea una instancia del objeto del proveedor de Google
   const provider = new firebase.auth.GoogleAuthProvider();
   //Autentica a traves de una ventana emergente
   firebase
@@ -123,11 +93,9 @@ const registerGmail = () => {
       //Google Access Token.
       const token = result.credential.accessToken;
       // The signed-in user info.
-      const user = result.user;
-      console.log(user);
-      console.log('Como que quiere');
+      const userGO = result.user;
+      console.log(userGO);
       location.hash = "#/inicio";
-
     })
     .catch(function (error) {
       // Handle Errors here.
@@ -137,7 +105,31 @@ const registerGmail = () => {
       const email = error.email;
       // The firebase.auth.AuthCredential type that was used.
       const credential = error.credential;
-      // ...
+    });
+};
+
+//Registro con FB
+const registerFb = () => {
+  const provider = new firebase.auth.FacebookAuthProvider();
+  //Autentica a traves de una ventana emergente
+  firebase.auth().signInWithPopup(provider)
+    .then(function (result) {
+      //Facebook Access Token.
+      const token = result.credential.accessToken;
+      // The signed-in user info.
+      const userFB = result.user;
+      console.log(userFB);
+      location.hash = "#/inicio";
+    })
+    .catch(function (error) {
+      alert('error');
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      const credential = error.credential;
     });
 };
 
@@ -152,8 +144,6 @@ const cerrarSesion = (user) => {
       console.log('No ha podido cerrar sesion');
     });
 }
-
-
 
 const posting = () => {
   const post = document.getElementById('publication-text').value;
