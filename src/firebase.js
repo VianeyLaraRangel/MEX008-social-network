@@ -17,10 +17,12 @@ const db = firebase.firestore();
 //Función registrar usuario con correo y contraseña
 const register = (email, password) => {
   if (password === '') {
-    alert('¡No olvides crear tu contraseña! Debe tener al menos 6 caracteres');
+    //alert('¡No olvides crear tu contraseña! Debe tener al menos 6 caracteres');
+    alertify.alert('Falta contraseña', '¡No olvides crear tu contraseña!. Debe tener al menos 6 caracteres');
   }
   if (email === '') {
-    alert('¡No olvides ingresar un correo electrónico válido!');
+    //alert('¡No olvides ingresar un correo electrónico válido!');
+    alertify.alert('Falta correo electrónico', '¡No olvides ingresar un correo electrónico válido!');
   }
   firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
     
@@ -30,7 +32,8 @@ const register = (email, password) => {
     console.log(user);
     user.sendEmailVerification()
     .then( () => {
-      alert('¡Se enviará un mensaje de verificacion a tu dirección de correo electronico!');
+      //alert('¡Se enviará un mensaje de verificacion a tu dirección de correo electronico!');
+      alertify.alert('Confirma tu correo', 'Se enviará un mensaje de verificación a tu dirección de correo electrónico');
       // Email sent.
       cerrarSesion();
     }).catch(function (error) {
@@ -45,11 +48,14 @@ const register = (email, password) => {
       console.log(errorMessage);
 
       if (errorCode === 'auth/invalid-email') {
-        alert('Correo inválido: Ingresa la dirección completa');
+        //alert('Correo inválido: Ingresa la dirección completa');
+        alertify.alert('Correo no válido!', 'Por favor, ingresa un correo electrónico válido.');
       } else if (errorCode === 'auth/weak-password') {
-        alert('La constraseña debe tener 6 caracteres mínimo');
+        //alert('La constraseña debe tener 6 caracteres mínimo');
+        alertify.alert('Contraseña no válida', 'Por favor, ingresa un contraseña válida');
       } else if (errorCode === 'auth/email-already-in-use') {
-        alert('La dirección de correo electrónico ya fué registrada');
+        //alert('La dirección de correo electrónico ya fué registrada');
+        alertify.alert('Correo existente', 'La dirección de correo electrónico ya fué registrada');
       }
     });
 };
@@ -57,10 +63,12 @@ const register = (email, password) => {
 //Funcion para ingreso
 const loginUser = (loginEmail, loginPassword) => {
   if (loginPassword === '') {
-    alert('¡Rucuerda la contraseña con la que te registraste');
+    //alert('¡Rucuerda la contraseña con la que te registraste');
+    alertify.alert('Contraseña incorrecta', 'Recuerda la contraseña con la que te registraste');
   }
   if (loginEmail === '') {
-    alert('¡Recuerda ingresar el correo con el que te registraste!');
+    //alert('¡Recuerda ingresar el correo con el que te registraste!');
+    alertify.alert('Correo incorrecto', 'Recuerda el correo con el que te registraste');
   }
   firebase.auth().signInWithEmailAndPassword(loginEmail, loginPassword)
     .then(() => {
@@ -74,11 +82,14 @@ const loginUser = (loginEmail, loginPassword) => {
       console.log(errorMessage);
 
       if (errorCode === 'auth/invalid-email') {
-        alert('Correo inválido: Ingresa la dirección completa');
+        //alert('Correo inválido: Ingresa la dirección completa');
+        alertify.alert('Correo inválido:','Ingresa la dirección completa');
       } else if (errorCode === 'auth/weak-password') {
-        alert('La constraseña debe tener 6 caracteres mínimo');
+        //alert('La constraseña debe tener 6 caracteres mínimo');
+        alertify.alert('Contraseña inválida:', 'La constraseña debe tener 6 carácteres mínimo');
       } else if (errorCode === 'auth/email-already-in-use') {
-        alert('La dirección de correo electrónico ya fué registrada');
+        //alert('La dirección de correo electrónico ya fué registrada');
+        alertify.alert('Correo existente:', 'La dirección de correo electrónico ya fúe resgistrada');
       }
     });
 };
@@ -183,12 +194,15 @@ const printPosts = (user) => {
       const borrarPublicacion = post => {
         console.log('eliminar', post);
         console.log(user);
-        alert('¿Seguro que quieres eliminar tú publicación?');
+        alertify.confirm('¿Seguro que quieres eliminar tú publicación?',
+                        function () { 
+                          alertify.success('Tu publicación ha sido eliminada')
+                        });
         db.collection('dbhopaki')
           .doc(post)
           .delete()
           .then(function () {
-            alert('¡Tú publicación se ha eliminado');
+            //alertify.success('¡Tú publicación se ha eliminado');
           })
           .catch(function (error) {
 
