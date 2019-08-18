@@ -35,7 +35,7 @@ const registro = {
                 <br>
                 <button id="registrar-btn" class="btn-send btn" >Enviar</button>
                 <br>
-                <p>¿Ya tienes cuenta? Ingresa <a href="/src/index.html#/login">Aquí</a> </p>
+                <p>¿Ya tienes cuenta? Ingresa <a href="#/login">Aquí</a> </p>
             </div>`
         return view
     },

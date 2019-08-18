@@ -36,8 +36,8 @@ let login = {
             <br>
             <button id="login-btn" class="btn-send btn">Acceder</button>
             <br>
-            <p>¿No te has registrado? Resgistráte <a href= "/src/index.html#/registro">Aquí</a></p>
-            <p>¿Olvidaste la contraseña? <a href= "#">Aquí</a></p>
+            <p>¿No te has registrado? Regístrate <a href="#/registro">Aquí</a></p>
+            <p>¿Olvidaste la contraseña? click <a href= "#">Aquí</a></p>
             </div>
             `;
         return view;
