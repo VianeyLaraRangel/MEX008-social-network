@@ -219,10 +219,12 @@ const printPosts = () => {
 			};
 			console.log(`${doc.data().first}`);
 			postArea.innerHTML += ` <br><br>
-		<div class="col-12 data-box">
-        	<p>${doc.data().first}</p>
+		<div class="data-box">
+		<textarea class="form-control" id="exampleFormControlTextarea1" rows="3">${doc.data().first}</textarea>
+			<div class="btn-group btn-group-toggle" data-toggle="buttons">
         		<td><button class="btn btn-danger" id="btn-eliminar">Eliminar</button></td>
-        		<td><button class="btn btn-warning"  id="btn-editar">Editar</button></td>
+				<td><button class="btn btn-warning"  id="btn-editar">Editar</button></td>
+			</div>
         </div>`;
 			const btnEliminar = document.getElementById('btn-eliminar');
 			btnEliminar.addEventListener('click', () => borrarPublicacion(doc.id));

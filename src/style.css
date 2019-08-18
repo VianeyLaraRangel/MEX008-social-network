@@ -185,8 +185,12 @@ h5 {
   background-color: #e9b000 !important;
 }
 
-.btn-publication {
-  border-radius: 0px;
+.btn-publicar {
+  border-radius: 20px;
+  width: 100px;
+  height: 40px;
+  background-color: #008F95;
+  border-color: transparent;
 }
 
 .fa-bell2 {
@@ -199,5 +203,14 @@ h5 {
 
 .bg-primary {
   background-color: #ae80da !important;
+}
+
+
+.btn-reaction {
+  border-radius: 0px;
+  width: 100px;
+  height: 40px;
+  background-color: #008F95;
+  border-color: transparent;
 }
 
