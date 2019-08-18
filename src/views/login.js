@@ -25,15 +25,16 @@ let login = {
                 <label for="email">Ingresa tu correo</label>
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">@</span>
-                <input type="text" class="form-control" placeholder="Ingresa tu correo" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="ejemplo@correo.com" aria-describedby="basic-addon1" id="login-mail"/>
             </div>
+            
             <label for="password">Ingresa tu password</label>
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock-open"></i></span>
-            <input type="text" class="form-control" placeholder="Ingresa tu contraseña" aria-describedby="basic-addon1">
+            <input type="password" class="form-control" placeholder="6 caractéres mínimo" aria-describedby="basic-addon1" id="login-password"/>
             </div>
             <br>
-            <button id="registrar-btn" class="btn-send btn">Enviar</button>
+            <button id="login-btn" class="btn-send btn">Acceder</button>
             </div>
             `;
         return view;
@@ -41,9 +42,16 @@ let login = {
 
     after_render: async () => {
         
-        const register = document.getElementById('registrar-btn');
+        const login = document.getElementById('login-btn');
+        const loginEmail = document.getElementById('login-mail');
         
-        register.addEventListener('click', () => location.hash = "#/inicio");
+        const loginPassword = document.getElementById('login-password');
+        
+        login.addEventListener('click', () => {
+            console.log(loginEmail.value);   
+            console.log(loginPassword.value); 
+            loginUser(loginEmail.value,loginPassword.value);
+        });
     }
 };
 
