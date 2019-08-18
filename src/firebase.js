@@ -11,26 +11,78 @@ const firebaseConfig = {
 // Inicializando Firebaseeee
 firebase.initializeApp(firebaseConfig);
 
+//Inicializando firestore para CRUD
+const db = firebase.firestore();
+
 //Función registrar usuario con correo y contraseña
-const registrar = (email, password) => {
-  firebase.auth().createUserWithEmailAndPassword(email, password)
-    .catch((error) => {
+const register = (email, password) => {
+  if (password === '') {
+    alert('¡No olvides crear tu contraseña! Debe tener al menos 6 caracteres');
+  }
+  if (email === '') {
+    alert('¡No olvides ingresar un correo electrónico válido!');
+  }
+  firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
+    
+    location.hash = '#/login';
+    
+    const user = firebase.auth().currentUser;
+    console.log(user);
+    user.sendEmailVerification()
+    .then( () => {
+      alert('¡Se enviará un mensaje de verificacion a tu dirección de correo electronico!');
+      // Email sent.
+      cerrarSesion();
+    }).catch(function (error) {
+      // An error happened.
+    });
+  })
+    .catch(error => {
       // Handle Errors here.
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorCode);
       console.log(errorMessage);
 
-      if (errorCode === "auth/invalid-email") {
+      if (errorCode === 'auth/invalid-email') {
         alert('Correo inválido: Ingresa la dirección completa');
-      } else if (errorCode === "auth/weak-password") {
+      } else if (errorCode === 'auth/weak-password') {
         alert('La constraseña debe tener 6 caracteres mínimo');
-      } else if (errorCode === "auth/email-already-in-use") {
+      } else if (errorCode === 'auth/email-already-in-use') {
         alert('La dirección de correo electrónico ya fué registrada');
       }
     });
-  location.hash = "#/inicio"
 };
+
+//Funcion para ingreso
+const loginUser = (loginEmail, loginPassword) => {
+  if (loginPassword === '') {
+    alert('¡Rucuerda la contraseña con la que te registraste');
+  }
+  if (loginEmail === '') {
+    alert('¡Recuerda ingresar el correo con el que te registraste!');
+  }
+  firebase.auth().signInWithEmailAndPassword(loginEmail, loginPassword)
+    .then(() => {
+      location.hash = "#/inicio";
+    })
+    .catch((error) => {
+      //Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode);
+      console.log(errorMessage);
+
+      if (errorCode === 'auth/invalid-email') {
+        alert('Correo inválido: Ingresa la dirección completa');
+      } else if (errorCode === 'auth/weak-password') {
+        alert('La constraseña debe tener 6 caracteres mínimo');
+      } else if (errorCode === 'auth/email-already-in-use') {
+        alert('La dirección de correo electrónico ya fué registrada');
+      }
+    });
+};
+
 
 //Registro con FB
 const registerFb = () => {
@@ -65,109 +117,99 @@ const registerGmail = () => {
   //crea una instancia del objeto del proveedor de Google
   const provider = new firebase.auth.GoogleAuthProvider();
   //Autentica a traves de una ventana emergente
-  firebase.auth().signInWithPopup(provider)
-    .then(function (result) {
-      console.log(result);
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      var token = result.credential.accessToken;
+  firebase
+    .auth().signInWithPopup(provider)
+    .then((result) => {
+      //Google Access Token.
+      const token = result.credential.accessToken;
       // The signed-in user info.
-      var user = result.user;
-      // ...
-      console.log('Hola');
+      const user = result.user;
+      console.log(user);
+      console.log('Como que quiere');
+      location.hash = "#/inicio";
+
     })
     .catch(function (error) {
       // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
+      const errorCode = error.code;
+      const errorMessage = error.message;
       // The email of the user's account used.
-      var email = error.email;
+      const email = error.email;
       // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
+      const credential = error.credential;
       // ...
     });
 };
 
-
-//Funcion para ingreso
-function ingreso() {
-  const email2 = document.getElementById("email2").value;
-  const password2 = document.getElementById("password2").value;
-  firebase.auth().signInWithEmailAndPassword(email2, password2)
-    .catch(function (error) {
-      //Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode);
-      console.log(errorMessage);
+//Función para cerrar sesión
+const cerrarSesion = (user) => {
+  firebase.auth().signOut()
+    .then(() => {
+      console.log('saliendo');
+      location.hash = "#/intro";
+    })
+    .catch((error) => {
+      console.log('No ha podido cerrar sesion');
     });
 }
 
-//Observador de la autenticación  
-const observador = () => {
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      console.log("existe usuario activo");
-      //User is signed in.
-      const displayName = user.displayName;
-      const email = user.email;
-      console.log("user");
-      const emailVerified = user.emailVerified;
-      const photoURL = user.photoURL;
-      const isAnonymous = user.isAnonymous;
-      const uid = user.uid;
-      const providerData = user.providerData;
-      type = "module"
-      location.hash = '#/inicio'
-    } else {
-      //User is signed out.
-      console.log("no existe usuario activo");
-    }
-  });
-};
 
-function cerrar() {
-  firebase.auth().signOut()
-    .then(function () {
-      console.log("saliendo");
+
+const posting = () => {
+  const post = document.getElementById('publication-text').value;
+  console.log(post);
+  console.log(db.collection('dbhopaki'));
+  db.collection('dbhopaki')
+    .add({
+      first: post,
+    })
+    .then(function (docRef) {
+      console.log('Document written with ID: ', docRef.id);
+
+      document.getElementById('publication-text').value = '';
     })
     .catch(function (error) {
-      console.log(error);
-    })
+      console.error('Error adding document: ', error);
+    });
 };
 
-//imprimir publicacion
-const db= firebase.firestore();
+const printPosts = (user) => {
+  db.collection('dbhopaki').onSnapshot(querySnapshot => {
+    const postArea = document.getElementById('post-area');
+    // console.log(postArea);
+    postArea.innerHTML = '';
+    querySnapshot.forEach(doc => {
+      console.log(doc);
+      const borrarPublicacion = post => {
+        console.log('eliminar', post);
+        console.log(user);
+        alert('¿Seguro que quieres eliminar tú publicación?');
+        db.collection('dbhopaki')
+          .doc(post)
+          .delete()
+          .then(function () {
+            alert('¡Tú publicación se ha eliminado');
+          })
+          .catch(function (error) {
 
-const publicar = () => {
-  const post= document.getElementById('publication-text').value;
-  console.log(post);
-  console.log(db.collection("dbhopaki"));
-  db.collection("dbhopaki").add( {
-    first: post
-  })
-  .then(function(docRef) {
-    console.log("Document written with ID: ", docRef.id);
+            // if () {
 
-    document.getElementById('publication-text').value='';
-  })
-  .catch(function(error) {
-    console.error("Error adding document: ", error);
-  });
-};
-//leyendo datos
-
-db.collection("dbhopaki").onSnapshot((querySnapshot) => {
-  const postArea= document.getElementById('post-area');
-  console.log(postArea);
-  postArea.innerHTML='';
-  querySnapshot.forEach((doc) => {
+            // }
+            console.error('Error removing document: ', error);
+          });
+      };
       console.log(`${doc.data().first}`);
-      postArea.innerHTML += `<div>
-      
-      <p>${doc.data().first}</p>
-      <td><button class="btn btn-danger" onclick="eliminar('${doc.id}')">Eliminar</button></td>
-      <td><button class="btn btn-warning" onclick="editar('${doc.id}', '${doc.data().first}')">Editar</button></td>
-    </div>`
+      postArea.innerHTML += ` <br> <br><div class="col-12 data-box">
+        <p>${doc.data().first}</p>
+        <td><button class="btn btn-danger" id="btn-eliminar">Eliminar</button></td>
+        <td><button class="btn btn-warning"  id="btn-editar">Editar</button></td>
+        </div>`;
+      const btnEliminar = document.getElementById('btn-eliminar');
+      btnEliminar.addEventListener('click', () => borrarPublicacion(doc.id));
+    });
   });
-});
+};
+
+//borrar publicación
+//const btnEliminar = document.getElementById('btn-eliminar');
 

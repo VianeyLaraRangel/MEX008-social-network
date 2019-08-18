@@ -128,3 +128,7 @@ document.getElementById('registrate').addEventListener('click', () => {
     cancelButtonAriaLabel: 'Cancelar',
   })
 });
+
+
+
+
