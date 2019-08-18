@@ -164,13 +164,6 @@ h5 {
 }
 
 
-.btn-purple {
-  background: #ae80da;
-  color: white;
-  border-color: #ae80da;
-}
-
-
 #post-area {
   width: 50%;
   height: auto;
@@ -203,3 +196,8 @@ h5 {
 .card-header {
   align-content: space-between;
 }
+
+.bg-primary {
+  background-color: #ae80da !important;
+}
+
