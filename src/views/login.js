@@ -48,8 +48,7 @@ let login = {
         const loginPassword = document.getElementById('login-password');
         
         login.addEventListener('click', () => {
-            console.log(loginEmail.value);   
-            console.log(loginPassword.value); 
+            console.log(loginEmail.value);    
             loginUser(loginEmail.value,loginPassword.value);
         });
     }

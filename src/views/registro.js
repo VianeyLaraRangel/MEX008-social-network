@@ -11,8 +11,8 @@ const registro = {
                 <button type="button" class="btn btn-secondary" id="btn-google"><img src="https://github.com/VianeyLaraRangel/MEX008-social-network/blob/master/src/img/googleicon.png?raw=true" width="10%"
                 height="auto"><strong>Registrar con Google</strong></button>
                 <br>
-                <button type="button" class="btn btn-secondary"><img src="https://github.com/VianeyLaraRangel/MEX008-social-network/blob/master/src/img/facebookicon.png?raw=true" width="10%"
-                height="auto" id="btn-fb"><strong>Registrar con Facebook</strong> </button>
+                <button type="button" class="btn btn-secondary" id="btn-fb"><img src="https://github.com/VianeyLaraRangel/MEX008-social-network/blob/master/src/img/facebookicon.png?raw=true" width="10%"
+                height="auto"><strong>Registrar con Facebook</strong> </button>
             </div>
             <div class="line-logo">
                 <hr class="decorate">
@@ -30,12 +30,10 @@ const registro = {
                 <label for="password">Crea una contraseña</label>
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
-                    <input type="text" class="form-control" placeholder="Ingresa tu contraseña" aria-describedby="basic-addon1" id="password-form"/>
+                    <input type="password" class="form-control" placeholder="Ingresa tu contraseña" aria-describedby="basic-addon1" id="password-form"/>
                 </div>
                 <br>
                 <button id="registrar-btn" class="btn-send btn" >Enviar</button>
-                <!--Prueba cerrar sesion-->
-                <button id="cerrar-btn" class="btn-send btn" >Cerrar sesión</button>
             </div>`
         return view
     },

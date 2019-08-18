@@ -27,7 +27,7 @@ const router = async () => {
   const parsedUrl = (request.resource ? '/' + request.resource : '/')
     + (request.id ? '/:id' : '') + (request.verb ? '/' + request.verb : '');
   //Obtener la página desde el hash
-  let page = routes[parsedUrl] ? routes[parsedUrl] : error404;
+  let page = routes[parsedUrl] ? routes[parsedUrl] : intro;
   content.innerHTML = await page.render();
   await page.after_render();
 }
@@ -50,10 +50,10 @@ const observador = () => {
       const isAnonymous = user.isAnonymous;
       const uid = user.uid;
       const providerData = user.providerData;
+      location.hash = "#/inicio";
     } else {
       //User is signed out.
       console.log('no existe usuario activo');
-      cerrarSesion();
     }
   });
 };

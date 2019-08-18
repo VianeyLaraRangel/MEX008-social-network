@@ -1,12 +1,12 @@
 //Integrando configuracion de proyecto en firebase
 const firebaseConfig = {
-  apiKey: 'AIzaSyAfAooPNMQOUS3UMPcAUDQHBXM64dAuBK0',
-  authDomain: 'hopaki-prueba.firebaseapp.com',
-  databaseURL: 'https://hopaki-prueba.firebaseio.com',
-  projectId: 'hopaki-prueba',
-  storageBucket: '',
-  messagingSenderId: '967562359456',
-  appId: '1:967562359456:web:8517811f94b84354',
+  apiKey: "AIzaSyAfAooPNMQOUS3UMPcAUDQHBXM64dAuBK0",
+  authDomain: "hopaki-prueba.firebaseapp.com",
+  databaseURL: "https://hopaki-prueba.firebaseio.com",
+  projectId: "hopaki-prueba",
+  storageBucket: "hopaki-prueba.appspot.com",
+  messagingSenderId: "967562359456",
+  appId: "1:967562359456:web:8517811f94b84354"
 };
 // Inicializando Firebase
 firebase.initializeApp(firebaseConfig);
@@ -22,10 +22,20 @@ const register = (email, password) => {
   if (email === '') {
     alert('¡No olvides ingresar un correo electrónico válido!');
   }
-  firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
-    alert('¡Se enviará un mensaje de verificacion a tu dirección de correo electronico!');
+  firebase.auth().createUserWithEmailAndPassword(email, password).then((  ) => {
+    
     location.hash = '#/login';
-    cerrarSesion();
+    
+    const user = firebase.auth().currentUser;
+    console.log(user);
+    user.sendEmailVerification()
+    .then( () => {
+      alert('¡Se enviará un mensaje de verificacion a tu dirección de correo electronico!');
+      // Email sent.
+      cerrarSesion();
+    }).catch(function (error) {
+      // An error happened.
+    });
   })
     .catch(error => {
       // Handle Errors here.
@@ -52,7 +62,7 @@ const loginUser = (loginEmail, loginPassword) => {
   if (loginEmail === '') {
     alert('¡Recuerda ingresar el correo con el que te registraste!');
   }
-  firebase.auth().signInWithEmailAndPassword(loginEmail,loginPassword)
+  firebase.auth().signInWithEmailAndPassword(loginEmail, loginPassword)
     .then(() => {
       location.hash = "#/inicio";
     })
@@ -73,60 +83,53 @@ const loginUser = (loginEmail, loginPassword) => {
     });
 };
 
-
-//Registro con FB
-const registerFb = () => {
-  //agregamos la instancia de objeto de proveedor de FB
-  const provider = new firebase.auth.FacebookAuthProvider();
-  //acceder con su cuenta, por medio de un popup
-  firebase.auth().signInWithPopup(provider)
-    .then(function (result) {
-      alert('exito');
-      console.log('result');
-      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-      var token = result.credential.accessToken;
-      // The signed-in user info.
-      var user = result.user;
-      // ...
-    }).catch(function (error) {
-      alert('error');
-      console.log(error);
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // The email of the user's account used.
-      var email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
-      // ...
-    });
-}
-
 //Registro con google
 const registerGmail = () => {
-  //crea una instancia del objeto del proveedor de Google
   const provider = new firebase.auth.GoogleAuthProvider();
   //Autentica a traves de una ventana emergente
   firebase
     .auth().signInWithPopup(provider)
     .then((result) => {
       //Google Access Token.
-      var token = result.credential.accessToken;
+      const token = result.credential.accessToken;
       // The signed-in user info.
-      var user = result.user;
-      // ...
-      console.log(user);
-      location.hash = "#/inicio"
+      const userGO = result.user;
+      console.log(userGO);
+      location.hash = "#/inicio";
     })
     .catch(function (error) {
       // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
+      const errorCode = error.code;
+      const errorMessage = error.message;
       // The email of the user's account used.
-      var email = error.email;
+      const email = error.email;
       // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
-      // ...
+      const credential = error.credential;
+    });
+};
+
+//Registro con FB
+const registerFb = () => {
+  const provider = new firebase.auth.FacebookAuthProvider();
+  //Autentica a traves de una ventana emergente
+  firebase.auth().signInWithPopup(provider)
+    .then(function (result) {
+      //Facebook Access Token.
+      const token = result.credential.accessToken;
+      // The signed-in user info.
+      const userFB = result.user;
+      console.log(userFB);
+      location.hash = "#/inicio";
+    })
+    .catch(function (error) {
+      alert('error');
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      const credential = error.credential;
     });
 };
 
@@ -135,13 +138,12 @@ const cerrarSesion = (user) => {
   firebase.auth().signOut()
     .then(() => {
       console.log('saliendo');
+      location.hash = "#/intro";
     })
     .catch((error) => {
       console.log('No ha podido cerrar sesion');
     });
 }
-
-
 
 const posting = () => {
   const post = document.getElementById('publication-text').value;
@@ -161,12 +163,13 @@ const posting = () => {
     });
 };
 
-const printPosts = () => {
+const printPosts = (user) => {
   db.collection('dbhopaki').onSnapshot(querySnapshot => {
     const postArea = document.getElementById('post-area');
     // console.log(postArea);
     postArea.innerHTML = '';
     querySnapshot.forEach(doc => {
+      console.log(doc);
       const borrarPublicacion = post => {
         console.log('eliminar', post);
         console.log(user);
@@ -199,3 +202,4 @@ const printPosts = () => {
 
 //borrar publicación
 //const btnEliminar = document.getElementById('btn-eliminar');
+
