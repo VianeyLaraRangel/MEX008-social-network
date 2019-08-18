@@ -1,18 +1,15 @@
 //Integrando configuracion de proyecto en firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyAfAooPNMQOUS3UMPcAUDQHBXM64dAuBK0",
-  authDomain: "hopaki-prueba.firebaseapp.com",
-  databaseURL: "https://hopaki-prueba.firebaseio.com",
-  projectId: "hopaki-prueba",
-  storageBucket: "hopaki-prueba.appspot.com",
-  messagingSenderId: "967562359456",
-  appId: "1:967562359456:web:8517811f94b84354"
+	apiKey: 'AIzaSyAfAooPNMQOUS3UMPcAUDQHBXM64dAuBK0',
+	authDomain: 'hopaki-prueba.firebaseapp.com',
+	databaseURL: 'https://hopaki-prueba.firebaseio.com',
+	projectId: 'hopaki-prueba',
+	storageBucket: '',
+	messagingSenderId: '967562359456',
+	appId: '1:967562359456:web:8517811f94b84354',
 };
 // Inicializando Firebase
 firebase.initializeApp(firebaseConfig);
-
-//Inicializando firestore para CRUD
-const db = firebase.firestore();
 
 //Función registrar usuario con correo y contraseña
 const register = (email, password) => {
@@ -143,6 +140,21 @@ const cerrarSesion = (user) => {
     .catch((error) => {
       console.log('No ha podido cerrar sesion');
     });
+    
+//Funcion para ingreso
+function ingreso() {
+	const email2 = document.getElementById('email2').value;
+	const password2 = document.getElementById('password2').value;
+	firebase
+		.auth()
+		.signInWithEmailAndPassword(email2, password2)
+		.catch(function(error) {
+			//Handle Errors here.
+			const errorCode = error.code;
+			const errorMessage = error.message;
+			console.log(errorCode);
+			console.log(errorMessage);
+		});
 }
 
 const posting = () => {
@@ -163,43 +175,59 @@ const posting = () => {
     });
 };
 
-const printPosts = (user) => {
-  db.collection('dbhopaki').onSnapshot(querySnapshot => {
-    const postArea = document.getElementById('post-area');
-    // console.log(postArea);
-    postArea.innerHTML = '';
-    querySnapshot.forEach(doc => {
-      console.log(doc);
-      const borrarPublicacion = post => {
-        console.log('eliminar', post);
-        console.log(user);
-        alert('¿Seguro que quieres eliminar tú publicación?');
-        db.collection('dbhopaki')
-          .doc(post)
-          .delete()
-          .then(function () {
-            alert('¡Tú publicación se ha eliminado');
-          })
-          .catch(function (error) {
+//imprimir publicacion
+const db = firebase.firestore();
 
-            // if () {
+const publicar = () => {
+	const post = document.getElementById('publication-text').value;
+	console.log(post);
+	console.log(db.collection('dbhopaki'));
+	db.collection('dbhopaki')
+		.add({
+			first: post,
+		})
+		.then(function(docRef) {
+			console.log('Document written with ID: ', docRef.id);
 
-            // }
-            console.error('Error removing document: ', error);
-          });
-      };
-      console.log(`${doc.data().first}`);
-      postArea.innerHTML += ` <br> <br><div class="col-12 data-box">
-        <p>${doc.data().first}</p>
-        <td><button class="btn btn-danger" id="btn-eliminar">Eliminar</button></td>
-        <td><button class="btn btn-warning"  id="btn-editar">Editar</button></td>
+			document.getElementById('publication-text').value = '';
+		})
+		.catch(function(error) {
+			console.error('Error adding document: ', error);
+		});
+};
+//leyendo datos
+
+const printPosts = () => {
+	db.collection('dbhopaki').onSnapshot(querySnapshot => {
+		const postArea = document.getElementById('post-area');
+		// console.log(postArea);
+		postArea.innerHTML = '';
+		querySnapshot.forEach(doc => {
+			const borrarPublicacion = post => {
+				console.log('eliminar', post);
+
+				db.collection('dbhopaki')
+					.doc(post)
+					.delete()
+					.then(function() {
+						console.log('Document successfully deleted!');
+					})
+					.catch(function(error) {
+						console.error('Error removing document: ', error);
+					});
+			};
+			console.log(`${doc.data().first}`);
+			postArea.innerHTML += ` <br><br>
+		<div class="col-12 data-box">
+        	<p>${doc.data().first}</p>
+        		<td><button class="btn btn-danger" id="btn-eliminar">Eliminar</button></td>
+        		<td><button class="btn btn-warning"  id="btn-editar">Editar</button></td>
         </div>`;
-      const btnEliminar = document.getElementById('btn-eliminar');
-      btnEliminar.addEventListener('click', () => borrarPublicacion(doc.id));
-    });
-  });
+			const btnEliminar = document.getElementById('btn-eliminar');
+			btnEliminar.addEventListener('click', () => borrarPublicacion(doc.id));
+		});
+	});
 };
 
 //borrar publicación
 //const btnEliminar = document.getElementById('btn-eliminar');
-
