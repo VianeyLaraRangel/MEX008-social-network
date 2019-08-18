@@ -25,18 +25,22 @@ const registrar = (email, password) => {
 
 			if (errorCode === 'auth/invalid-email') {
 				alert('Correo inválido: Ingresa la dirección completa');
+				return;
 			} else if (errorCode === 'auth/weak-password') {
 				alert('La constraseña debe tener 6 caracteres mínimo');
+				return;
 			} else if (errorCode === 'auth/email-already-in-use') {
 				alert('La dirección de correo electrónico ya fué registrada');
+				return;
+			} else {
+				location.hash = '#/inicio';
 			}
 		});
-	location.hash = '#/inicio';
-};
-
+	
+	};
 //Registro con FB
 const registerFb = () => {
-  //agregamos la instancia de objeto de proveedor de FB
+  //agregamos la instancia de objeto de roveedor de FB
   const provider = new firebase.auth.FacebookAuthProvider();
   //acceder con su cuenta, por medio de un popup
   firebase.auth().signInWithPopup(provider)
@@ -182,7 +186,9 @@ const printPosts = () => {
 					.catch(function(error) {
 						console.error('Error removing document: ', error);
 					});
+					
 			};
+			
 			console.log(`${doc.data().first}`);
 			postArea.innerHTML += ` <br> <br><div class="col-12 data-box">
         <p>${doc.data().first}</p>
@@ -191,9 +197,12 @@ const printPosts = () => {
         </div>`;
 			const btnEliminar = document.getElementById('btn-eliminar');
 			btnEliminar.addEventListener('click', () => borrarPublicacion(doc.id));
+
 		});
+		
 	});
+	
 };
 
-//borrar publicación
-//const btnEliminar = document.getElementById('btn-eliminar');
+	  
+
