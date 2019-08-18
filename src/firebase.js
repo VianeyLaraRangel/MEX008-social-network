@@ -196,7 +196,7 @@ const printPosts = (user) => {
         console.log(user);
         alertify.confirm('¿Seguro que quieres eliminar tú publicación?',
                         function () { 
-                          alertify.success('Tu publicación ha sido eliminada')
+                          alertify.success('Has eliminado tu publicación');
                         });
         db.collection('dbhopaki')
           .doc(post)
