@@ -136,6 +136,7 @@ const cerrarSesion = (user) => {
   firebase.auth().signOut()
     .then(() => {
       console.log('saliendo');
+      location.hash = "#/intro";
     })
     .catch((error) => {
       console.log('No ha podido cerrar sesion');
@@ -162,12 +163,13 @@ const posting = () => {
     });
 };
 
-const printPosts = () => {
+const printPosts = (user) => {
   db.collection('dbhopaki').onSnapshot(querySnapshot => {
     const postArea = document.getElementById('post-area');
     // console.log(postArea);
     postArea.innerHTML = '';
     querySnapshot.forEach(doc => {
+      console.log(doc);
       const borrarPublicacion = post => {
         console.log('eliminar', post);
         console.log(user);

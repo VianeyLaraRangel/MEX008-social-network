@@ -34,8 +34,6 @@ const registro = {
                 </div>
                 <br>
                 <button id="registrar-btn" class="btn-send btn" >Enviar</button>
-                <!--Prueba cerrar sesion-->
-                <button id="cerrar-btn" class="btn-send btn" >Cerrar sesión</button>
             </div>`
         return view
     },

@@ -28,7 +28,7 @@ let inicio = {
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
             </form>
-            <p> Cerrar Sesión </p>
+            <button id="cerrar-btn" class="btn btn-warning"> Cerrar Sesión </button>
         </div>
     </nav>
     <br><br>
@@ -51,11 +51,13 @@ let inicio = {
     printPosts();
     const btnPublicar = document.getElementById('btn-publication');
     const btnPerfil = document.getElementById('img-avatar');
+    const btnCerrarSesion = document.getElementById('cerrar-btn');
 
     btnPublicar.addEventListener('click', posting);
     btnPerfil.addEventListener('click', () => {
       location.hash = "#/perfil";
     })
+    btnCerrarSesion.addEventListener('click', cerrarSesion);
   }
 };
 export default inicio;

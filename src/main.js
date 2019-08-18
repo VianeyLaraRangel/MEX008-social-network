@@ -27,7 +27,7 @@ const router = async () => {
   const parsedUrl = (request.resource ? '/' + request.resource : '/')
     + (request.id ? '/:id' : '') + (request.verb ? '/' + request.verb : '');
   //Obtener la página desde el hash
-  let page = routes[parsedUrl] ? routes[parsedUrl] : error404;
+  let page = routes[parsedUrl] ? routes[parsedUrl] : intro;
   content.innerHTML = await page.render();
   await page.after_render();
 }
