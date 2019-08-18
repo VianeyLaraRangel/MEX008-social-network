@@ -108,11 +108,14 @@ const registerGmail = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   //Autentica a traves de una ventana emergente
   firebase
-    .auth().signInWithPopup(provider).then((result) => {
+    .auth().signInWithPopup(provider)
+    .then((result) => {
       //Google Access Token.
       var token = result.credential.accessToken;
       // The signed-in user info.
       var user = result.user;
+      location.hash = "#/inicio";
+
       // ...
       console.log(user);
     })
