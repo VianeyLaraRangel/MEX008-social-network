@@ -1,15 +1,18 @@
 //Integrando configuracion de proyecto en firebase
 const firebaseConfig = {
-	apiKey: 'AIzaSyAfAooPNMQOUS3UMPcAUDQHBXM64dAuBK0',
-	authDomain: 'hopaki-prueba.firebaseapp.com',
-	databaseURL: 'https://hopaki-prueba.firebaseio.com',
-	projectId: 'hopaki-prueba',
-	storageBucket: '',
-	messagingSenderId: '967562359456',
-	appId: '1:967562359456:web:8517811f94b84354',
+  apiKey: "AIzaSyAfAooPNMQOUS3UMPcAUDQHBXM64dAuBK0",
+  authDomain: "hopaki-prueba.firebaseapp.com",
+  databaseURL: "https://hopaki-prueba.firebaseio.com",
+  projectId: "hopaki-prueba",
+  storageBucket: "hopaki-prueba.appspot.com",
+  messagingSenderId: "967562359456",
+  appId: "1:967562359456:web:8517811f94b84354"
 };
 // Inicializando Firebase
 firebase.initializeApp(firebaseConfig);
+
+//Inicializando firestore para CRUD
+const db = firebase.firestore();
 
 //Función registrar usuario con correo y contraseña
 const register = (email, password) => {
@@ -19,7 +22,7 @@ const register = (email, password) => {
   if (email === '') {
     alert('¡No olvides ingresar un correo electrónico válido!');
   }
-  firebase.auth().createUserWithEmailAndPassword(email, password).then((  ) => {
+  firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
     
     location.hash = '#/login';
     
@@ -80,8 +83,38 @@ const loginUser = (loginEmail, loginPassword) => {
     });
 };
 
+
+//Registro con FB
+const registerFb = () => {
+  //agregamos la instancia de objeto de proveedor de FB
+  const provider = new firebase.auth.FacebookAuthProvider();
+  //acceder con su cuenta, por medio de un popup
+  firebase.auth().signInWithPopup(provider)
+    .then(function (result) {
+      alert('exito');
+      console.log('result');
+      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+      var token = result.credential.accessToken;
+      // The signed-in user info.
+      var user = result.user;
+      // ...
+    }).catch(function (error) {
+      alert('error');
+      console.log(error);
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // The email of the user's account used.
+      var email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      var credential = error.credential;
+      // ...
+    });
+}
+
 //Registro con google
 const registerGmail = () => {
+  //crea una instancia del objeto del proveedor de Google
   const provider = new firebase.auth.GoogleAuthProvider();
   //Autentica a traves de una ventana emergente
   firebase
@@ -90,36 +123,13 @@ const registerGmail = () => {
       //Google Access Token.
       const token = result.credential.accessToken;
       // The signed-in user info.
-      const userGO = result.user;
-      console.log(userGO);
+      const user = result.user;
+      console.log(user);
+      console.log('Como que quiere');
       location.hash = "#/inicio";
-    })
-    .catch(function (error) {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      const credential = error.credential;
-    });
-};
 
-//Registro con FB
-const registerFb = () => {
-  const provider = new firebase.auth.FacebookAuthProvider();
-  //Autentica a traves de una ventana emergente
-  firebase.auth().signInWithPopup(provider)
-    .then(function (result) {
-      //Facebook Access Token.
-      const token = result.credential.accessToken;
-      // The signed-in user info.
-      const userFB = result.user;
-      console.log(userFB);
-      location.hash = "#/inicio";
     })
     .catch(function (error) {
-      alert('error');
       // Handle Errors here.
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -127,6 +137,7 @@ const registerFb = () => {
       const email = error.email;
       // The firebase.auth.AuthCredential type that was used.
       const credential = error.credential;
+      // ...
     });
 };
 
@@ -134,28 +145,15 @@ const registerFb = () => {
 const cerrarSesion = (user) => {
   firebase.auth().signOut()
     .then(() => {
-      alert('Cerrando sesión. ¡Vuelve pronto!');
+      console.log('saliendo');
       location.hash = "#/intro";
     })
     .catch((error) => {
       console.log('No ha podido cerrar sesion');
     });
-    
-//Funcion para ingreso
-function ingreso() {
-	const email2 = document.getElementById('email2').value;
-	const password2 = document.getElementById('password2').value;
-	firebase
-		.auth()
-		.signInWithEmailAndPassword(email2, password2)
-		.catch(function(error) {
-			//Handle Errors here.
-			const errorCode = error.code;
-			const errorMessage = error.message;
-			console.log(errorCode);
-			console.log(errorMessage);
-		});
 }
+
+
 
 const posting = () => {
   const post = document.getElementById('publication-text').value;
@@ -175,59 +173,39 @@ const posting = () => {
     });
 };
 
-//imprimir publicacion
-const db = firebase.firestore();
+const printPosts = (user) => {
+  db.collection('dbhopaki').onSnapshot(querySnapshot => {
+    const postArea = document.getElementById('post-area');
+    // console.log(postArea);
+    postArea.innerHTML = '';
+    querySnapshot.forEach(doc => {
+      console.log(doc);
+      const borrarPublicacion = post => {
+        console.log('eliminar', post);
+        console.log(user);
+        alert('¿Seguro que quieres eliminar tú publicación?');
+        db.collection('dbhopaki')
+          .doc(post)
+          .delete()
+          .then(function () {
+            alert('¡Tú publicación se ha eliminado');
+          })
+          .catch(function (error) {
 
-const publicar = () => {
-	const post = document.getElementById('publication-text').value;
-	console.log(post);
-	console.log(db.collection('dbhopaki'));
-	db.collection('dbhopaki')
-		.add({
-			first: post,
-		})
-		.then(function(docRef) {
-			console.log('Document written with ID: ', docRef.id);
+            // if () {
 
-			document.getElementById('publication-text').value = '';
-		})
-		.catch(function(error) {
-			console.error('Error adding document: ', error);
-		});
-};
-//leyendo datos
-
-const printPosts = () => {
-	db.collection('dbhopaki').onSnapshot(querySnapshot => {
-		const postArea = document.getElementById('post-area');
-		// console.log(postArea);
-		postArea.innerHTML = '';
-		querySnapshot.forEach(doc => {
-			const borrarPublicacion = post => {
-				console.log('eliminar', post);
-
-				db.collection('dbhopaki')
-					.doc(post)
-					.delete()
-					.then(function() {
-						console.log('Document successfully deleted!');
-					})
-					.catch(function(error) {
-						console.error('Error removing document: ', error);
-					});
-			};
-			console.log(`${doc.data().first}`);
-			postArea.innerHTML += ` <br><br>
-		<div class="col-12 data-box">
-        	<p>${doc.data().first}</p>
-        		<td><button class="btn btn-danger" id="btn-eliminar">Eliminar</button></td>
-        		<td><button class="btn btn-warning"  id="btn-editar">Editar</button></td>
+            // }
+            console.error('Error removing document: ', error);
+          });
+      };
+      console.log(`${doc.data().first}`);
+      postArea.innerHTML += ` <br> <br><div class="col-12 data-box">
+        <p>${doc.data().first}</p>
+        <td><button class="btn btn-danger" id="btn-eliminar">Eliminar</button></td>
+        <td><button class="btn btn-warning"  id="btn-editar">Editar</button></td>
         </div>`;
-			const btnEliminar = document.getElementById('btn-eliminar');
-			btnEliminar.addEventListener('click', () => borrarPublicacion(doc.id));
-		});
-	});
+      const btnEliminar = document.getElementById('btn-eliminar');
+      btnEliminar.addEventListener('click', () => borrarPublicacion(doc.id));
+    });
+  });
 };
-
-//borrar publicación
-//const btnEliminar = document.getElementById('btn-eliminar');
