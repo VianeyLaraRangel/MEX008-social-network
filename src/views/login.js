@@ -35,6 +35,9 @@ let login = {
             </div>
             <br>
             <button id="login-btn" class="btn-send btn">Acceder</button>
+            <br>
+            <p>¿No te has registrado? Click <a href= "#/registro">Aquí</a></p>
+            <p>¿Olvidaste la contraseña? <a href= "#/intro" id="reset-password">Aquí</a></p>
             </div>
             `;
         return view;
@@ -42,15 +45,16 @@ let login = {
 
     after_render: async () => {
         
-        const login = document.getElementById('login-btn');
         const loginEmail = document.getElementById('login-mail');
-        
         const loginPassword = document.getElementById('login-password');
+        const login = document.getElementById('login-btn');
+        const resetPassword = document.getElementById('reset-password');
         
         login.addEventListener('click', () => {
             console.log(loginEmail.value);    
             loginUser(loginEmail.value,loginPassword.value);
         });
+        resetPassword.addEventListener('click',resetPassword);
     }
 };
 

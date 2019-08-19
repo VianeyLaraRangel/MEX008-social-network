@@ -11,8 +11,8 @@ const registro = {
                 <button type="button" class="btn btn-secondary" id="btn-google"><img src="https://github.com/VianeyLaraRangel/MEX008-social-network/blob/master/src/img/googleicon.png?raw=true" width="10%"
                 height="auto"><strong>Registrar con Google</strong></button>
                 <br>
-                <button type="button" class="btn btn-secondary"><img src="https://github.com/VianeyLaraRangel/MEX008-social-network/blob/master/src/img/facebookicon.png?raw=true" width="10%"
-                height="auto" id="btn-fb"><strong>Registrar con Facebook</strong> </button>
+                <button type="button" class="btn btn-secondary" id="btn-fb"><img src="https://github.com/VianeyLaraRangel/MEX008-social-network/blob/master/src/img/facebookicon.png?raw=true" width="10%"
+                height="auto"><strong>Registrar con Facebook</strong> </button>
             </div>
             <div class="line-logo">
                 <hr class="decorate">
@@ -34,6 +34,8 @@ const registro = {
                 </div>
                 <br>
                 <button id="registrar-btn" class="btn-send btn" >Enviar</button>
+                <br>
+                <p>¿Ya tienes cuenta? Ingresa <a href="#/login">Aquí</a> </p>
             </div>`
         return view
     },
