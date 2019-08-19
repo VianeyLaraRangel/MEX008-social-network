@@ -37,7 +37,6 @@ let inicio = {
             <textarea class="form-control" id="publication-text" rows="3" placeholder= "¿Que vas a compartir hoy?"></textarea>
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
                 <button type="button" class="btn btn-primary btn-publicar" id="btn-publication"> Publicar </button>
-                <button type="button" class="btn btn-primary btn-publicar" id="btn-reaction"> <i class="fas fa-book"></i> </button>
             </div>
         </div>
     </form>

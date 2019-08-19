@@ -214,3 +214,11 @@ h5 {
   border-color: transparent;
 }
 
+.like-btn {
+background-color: #008F95;
+}
+
+.dislike-btn {
+  border-radius: 20px;
+  background-color: #008F95;
+}

@@ -198,6 +198,8 @@ const publicar = () => {
 };
 //leyendo datos
 
+
+
 const printPosts = () => {
 	db.collection('dbhopaki').onSnapshot(querySnapshot => {
 		const postArea = document.getElementById('post-area');
@@ -223,14 +225,33 @@ const printPosts = () => {
 		<textarea class="form-control" id="exampleFormControlTextarea1" rows="3">${doc.data().first}</textarea>
 			<div class="btn-group btn-group-toggle" data-toggle="buttons">
         		<td><button class="btn btn-danger" id="btn-eliminar">Eliminar</button></td>
-				<td><button class="btn btn-warning"  id="btn-editar">Editar</button></td>
+        <td><button class="btn btn-warning"  id="btn-editar">Editar</button></td>
+        <td><input type="button" id="btn-like" value="Like" class="btn like-btn"></td>
+        <td><input type="button" id="btn-dislike" value="Dislike" class="btn dislike-btn"></td>
 			</div>
         </div>`;
 			const btnEliminar = document.getElementById('btn-eliminar');
-			btnEliminar.addEventListener('click', () => borrarPublicacion(doc.id));
+      btnEliminar.addEventListener('click', () => borrarPublicacion(doc.id));
+      const btnLike = document.getElementById("btn-like");
+      let i = 0;
+const contadorLikes = () => {
+    i = i + 1;
+    btnLike.value = "Like ("+ i +")";
+}
+      btnLike.addEventListener('click', contadorLikes);
+      const btnDislike = document.getElementById("btn-dislike");
+      const contadorDislikes = () => {
+    i = i - 1;
+    btnLike.value = "Like ("+i +")";
+}
+
+      btnDislike.addEventListener('click', contadorDislikes);
 		});
 	});
 };
+
+
+
 
 //borrar publicación
 //const btnEliminar = document.getElementById('btn-eliminar');
