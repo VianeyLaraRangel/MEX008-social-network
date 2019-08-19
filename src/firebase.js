@@ -49,10 +49,10 @@ const register = (email, password) => {
         //TRINITY-alert('Correo inválido: Ingresa la dirección completa');
         alertify.alert('Correo no válido!', 'Por favor, ingresa un correo electrónico válido.');
       } else if (errorCode === 'auth/weak-password') {
-        //alert('La constraseña debe tener 6 caracteres mínimo');
+        //TRINITY-alert('La constraseña debe tener 6 caracteres mínimo');
         alertify.alert('Contraseña no válida', 'Por favor, ingresa un contraseña válida');
       } else if (errorCode === 'auth/email-already-in-use') {
-        //alert('La dirección de correo electrónico ya fué registrada');
+        //TRINITY-alert('La dirección de correo electrónico ya fué registrada');
         alertify.alert('Correo existente', 'La dirección de correo electrónico ya fué registrada');
       }
     });
