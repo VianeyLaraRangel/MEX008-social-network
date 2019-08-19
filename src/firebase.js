@@ -61,11 +61,11 @@ const register = (email, password) => {
 //Funcion para ingreso
 const loginUser = (loginEmail, loginPassword) => {
   if (loginPassword === '') {
-    //alert('¡Rucuerda la contraseña con la que te registraste');
+    //TRINITY-alert('¡Rucuerda la contraseña con la que te registraste');
     alertify.alert('Contraseña incorrecta', 'Recuerda la contraseña con la que te registraste');
   }
   if (loginEmail === '') {
-    //alert('¡Recuerda ingresar el correo con el que te registraste!');
+    //TRINITY-alert('¡Recuerda ingresar el correo con el que te registraste!');
     alertify.alert('Correo incorrecto', 'Recuerda el correo con el que te registraste');
   }
   firebase.auth().signInWithEmailAndPassword(loginEmail, loginPassword)
@@ -81,13 +81,13 @@ const loginUser = (loginEmail, loginPassword) => {
       console.log(errorMessage);
 
       if (errorCode === 'auth/invalid-email') {
-        //alert('Correo inválido: Ingresa la dirección completa');
+        //TRINITY-alert('Correo inválido: Ingresa la dirección completa');
         alertify.alert('Correo inválido:','Ingresa la dirección completa');
       } else if (errorCode === 'auth/weak-password') {
-        //alert('La constraseña debe tener 6 caracteres mínimo');
+        //TRINITY-alert('La constraseña debe tener 6 caracteres mínimo');
         alertify.alert('Contraseña inválida:', 'La constraseña debe tener 6 carácteres mínimo');
       } else if (errorCode === 'auth/email-already-in-use') {
-        //alert('La dirección de correo electrónico ya fué registrada');
+        //TRINITY-alert('La dirección de correo electrónico ya fué registrada');
         alertify.alert('Correo existente:', 'La dirección de correo electrónico ya fúe resgistrada');
       }
     });
