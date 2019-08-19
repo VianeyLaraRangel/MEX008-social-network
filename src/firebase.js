@@ -46,7 +46,7 @@ const register = (email, password) => {
       console.log(errorMessage);
 
       if (errorCode === 'auth/invalid-email') {
-        //alert('Correo inválido: Ingresa la dirección completa');
+        //TRINITY-alert('Correo inválido: Ingresa la dirección completa');
         alertify.alert('Correo no válido!', 'Por favor, ingresa un correo electrónico válido.');
       } else if (errorCode === 'auth/weak-password') {
         //alert('La constraseña debe tener 6 caracteres mínimo');
