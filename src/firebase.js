@@ -203,6 +203,8 @@ const printPosts = (user) => {
             console.error('Error removing document: ', error);
           });
       };
+      //Cambiando template por Rosario
+      
       console.log(`${doc.data().first}`);
       postArea.innerHTML += ` <br> <br><div class="col-12 data-box">
         <p>${doc.data().first}</p>
