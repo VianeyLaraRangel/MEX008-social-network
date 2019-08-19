@@ -167,17 +167,17 @@ const resetPassword = () => {
 
 //Función para cerrar sesión
 const cerrarSesion = user => {
-	firebase
-		.auth()
-		.signOut()
+	firebase.auth().signOut()
 		.then(() => {
-			console.log('saliendo');
+      console.log('saliendo');
+      alert('Cerrando sesión.¡Vuelve pronto!');
 			location.hash = '#/intro';
 		})
 		.catch(error => {
 			console.log('No ha podido cerrar sesion');
 		});
 };
+
 //Función para guardar datos
 const posting = () => {
 	const post = document.getElementById('publication-text').value;
