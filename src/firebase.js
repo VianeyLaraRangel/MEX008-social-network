@@ -30,7 +30,7 @@ const register = (email, password) => {
     console.log(user);
     user.sendEmailVerification()
     .then( () => {
-      //alert('¡Se enviará un mensaje de verificacion a tu dirección de correo electronico!');
+      //TRINITY-alert('¡Se enviará un mensaje de verificacion a tu dirección de correo electronico!');
       alertify.alert('Confirma tu correo', 'Se enviará un mensaje de verificación a tu dirección de correo electrónico');
       // Email sent.
       cerrarSesion();
