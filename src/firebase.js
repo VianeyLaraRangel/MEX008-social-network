@@ -23,9 +23,7 @@ const register = (email, password) => {
     alert('¡No olvides ingresar un correo electrónico válido!');
   }
   firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
-    
     location.hash = '#/login';
-    
     const user = firebase.auth().currentUser;
     console.log(user);
     user.sendEmailVerification()
@@ -33,8 +31,8 @@ const register = (email, password) => {
       alert('¡Se enviará un mensaje de verificacion a tu dirección de correo electronico!');
       // Email sent.
       cerrarSesion();
-    }).catch(function (error) {
-      // An error happened.
+    }).catch((error)=> {
+      alert('Tu registro no fue existoso');
     });
   })
     .catch(error => {
@@ -54,7 +52,62 @@ const register = (email, password) => {
     });
 };
 
-//Funcion para ingreso
+//Registro con google
+const registerGmail = () => {
+  //Crea una instancia del objeto del proveedor de Google
+  const provider = new firebase.auth.GoogleAuthProvider();
+  //Autentica a traves de una ventana emergente
+  firebase.auth().signInWithPopup(provider)
+    .then((result) => {
+      //Google Access Token.
+      const token = result.credential.accessToken;
+      // The signed-in user info.
+      let user = result.user;
+      console.log(user);
+      location.hash = "#/inicio";
+
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      const credential = error.credential;
+      // ...
+    });
+};
+
+//Registro con FB
+const registerFb = () => {
+  //Crea una instancia del objeto del proveedor de FB
+  const provider = new firebase.auth.FacebookAuthProvider();
+  //Autentica a traves de una ventana emergente
+  firebase.auth().signInWithPopup(provider)
+    .then(function (result) {
+      alert('exito');
+      console.log('result');
+      //FB Access Token.
+      const token = result.credential.accessToken;
+      // The signed-in user info.
+      let user = result.user;
+      console.log(user);
+      location.hash = "#/inicio";
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      const credential = error.credential;
+      // ...
+    });
+};
+
+//Funcion para ingresar
 const loginUser = (loginEmail, loginPassword) => {
   if (loginPassword === '') {
     alert('¡Rucuerda la contraseña con la que te registraste');
@@ -82,64 +135,21 @@ const loginUser = (loginEmail, loginPassword) => {
       }
     });
 };
-
-
-//Registro con FB
-const registerFb = () => {
-  //agregamos la instancia de objeto de proveedor de FB
-  const provider = new firebase.auth.FacebookAuthProvider();
-  //acceder con su cuenta, por medio de un popup
-  firebase.auth().signInWithPopup(provider)
-    .then(function (result) {
-      alert('exito');
-      console.log('result');
-      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-      var token = result.credential.accessToken;
-      // The signed-in user info.
-      var user = result.user;
-      // ...
-    }).catch(function (error) {
-      alert('error');
-      console.log(error);
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // The email of the user's account used.
-      var email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
-      // ...
-    });
-}
-
-//Registro con google
-const registerGmail = () => {
-  //crea una instancia del objeto del proveedor de Google
-  const provider = new firebase.auth.GoogleAuthProvider();
-  //Autentica a traves de una ventana emergente
-  firebase
-    .auth().signInWithPopup(provider)
-    .then((result) => {
-      //Google Access Token.
-      const token = result.credential.accessToken;
-      // The signed-in user info.
-      const user = result.user;
-      console.log(user);
-      console.log('Como que quiere');
-      location.hash = "#/inicio";
-
-    })
-    .catch(function (error) {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      const credential = error.credential;
-      // ...
-    });
+//Función para reestablecer contraseña
+const resetPassword = () => {
+  const auth = firebase.auth();
+  const emailAddress = "user@example.com";
+  
+  auth.sendPasswordResetEmail(emailAddress)
+  .then(() => {
+    // Email sent.
+  }).catch(function(error) {
+    // An error happened.
+  });
 };
+
+//Función para ingresar con Google
+//Función para ingresar con FB
 
 //Función para cerrar sesión
 const cerrarSesion = (user) => {
@@ -151,10 +161,8 @@ const cerrarSesion = (user) => {
     .catch((error) => {
       console.log('No ha podido cerrar sesion');
     });
-}
-
-
-
+};
+//Función para guardar datos
 const posting = () => {
   const post = document.getElementById('publication-text').value;
   console.log(post);
@@ -173,6 +181,7 @@ const posting = () => {
     });
 };
 
+//Función para imprimir post
 const printPosts = (user) => {
   db.collection('dbhopaki').onSnapshot(querySnapshot => {
     const postArea = document.getElementById('post-area');
@@ -191,10 +200,6 @@ const printPosts = (user) => {
             alert('¡Tú publicación se ha eliminado');
           })
           .catch(function (error) {
-
-            // if () {
-
-            // }
             console.error('Error removing document: ', error);
           });
       };
@@ -208,8 +213,4 @@ const printPosts = (user) => {
       btnEliminar.addEventListener('click', () => borrarPublicacion(doc.id));
     });
   });
-};
-
-//borrar publicación
-//const btnEliminar = document.getElementById('btn-eliminar');
-
+}; 

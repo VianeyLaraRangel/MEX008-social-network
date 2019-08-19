@@ -21,6 +21,7 @@ let intro = {
               <button class="btn btn-primary btn-principal" id="registrate-button">Regístrate</button>
             </div>
           </div>
+          
         </section>
       </div>`
       return view
