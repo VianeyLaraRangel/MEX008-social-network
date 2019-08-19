@@ -206,6 +206,7 @@ const printPosts = (user) => {
       const borrarPublicacion = post => {
         console.log('eliminar', post);
         console.log(user);
+        //TRINITY-agregando alertifiy de confirmarcion para eliminar publicacion
         alertify.confirm('¿Seguro que quieres eliminar tú publicación?',
                         function () { 
                           alertify.success('Has eliminado tu publicación');
