@@ -22,15 +22,15 @@ const register = (email, password) => {
   if (email === '') {
     alert('¡No olvides ingresar un correo electrónico válido!');
   }
-  firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
-    location.hash = '#/login';
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+  .then(() => {
     const user = firebase.auth().currentUser;
     console.log(user);
     user.sendEmailVerification()
-    .then( () => {
+    .then(() => {
       alert('¡Se enviará un mensaje de verificacion a tu dirección de correo electronico!');
       // Email sent.
-      cerrarSesion();
+      location.hash = "#/login";
     }).catch((error)=> {
       alert('Tu registro no fue existoso');
     });
@@ -65,7 +65,6 @@ const registerGmail = () => {
       let user = result.user;
       console.log(user);
       location.hash = "#/inicio";
-
     })
     .catch((error) => {
       // Handle Errors here.
@@ -135,11 +134,14 @@ const loginUser = (loginEmail, loginPassword) => {
       }
     });
 };
+//Funcion para verificar contraseña
+const verifyEmail = () => {
+
+};
 //Función para reestablecer contraseña
 const resetPassword = () => {
   const auth = firebase.auth();
   const emailAddress = "user@example.com";
-  
   auth.sendPasswordResetEmail(emailAddress)
   .then(() => {
     // Email sent.
