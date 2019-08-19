@@ -17,11 +17,11 @@ const db = firebase.firestore();
 //Función registrar usuario con correo y contraseña
 const register = (email, password) => {
   if (password === '') {
-    //alert('¡No olvides crear tu contraseña! Debe tener al menos 6 caracteres');
+    //SILVIA-alert('¡No olvides crear tu contraseña! Debe tener al menos 6 caracteres');
     alertify.alert('Falta contraseña', '¡No olvides crear tu contraseña!. Debe tener al menos 6 caracteres');
   }
   if (email === '') {
-    //alert('¡No olvides ingresar un correo electrónico válido!');
+    //TRINITY-alert('¡No olvides ingresar un correo electrónico válido!');
     alertify.alert('Falta correo electrónico', '¡No olvides ingresar un correo electrónico válido!');
   }
   firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
