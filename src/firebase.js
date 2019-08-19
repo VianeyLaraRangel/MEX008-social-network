@@ -124,10 +124,10 @@ const registerFb = () => {
 //Funcion para ingresar
 const loginUser = (loginEmail, loginPassword) => {
   if (loginPassword === '') {
-    alert('¡Rucuerda la contraseña con la que te registraste');
+    alertify.alert('¡Recuerda la contraseña con la que te registraste');
   }
   if (loginEmail === '') {
-    alert('¡Recuerda ingresar el correo con el que te registraste!');
+    alertify.alert('¡Recuerda ingresar el correo con el que te registraste!');
   }
   firebase.auth().signInWithEmailAndPassword(loginEmail, loginPassword)
     .then(() => {
@@ -141,11 +141,11 @@ const loginUser = (loginEmail, loginPassword) => {
       console.log(errorMessage);
 
       if (errorCode === 'auth/invalid-email') {
-        alert('Correo inválido: Ingresa la dirección completa');
+        alertify.alert('Correo inválido:', 'Ingresa la dirección completa');
       } else if (errorCode === 'auth/weak-password') {
-        alert('La constraseña debe tener 6 caracteres mínimo');
+        alertify.alert('Error:', 'La constraseña debe tener 6 caracteres mínimo');
       } else if (errorCode === 'auth/email-already-in-use') {
-        alert('La dirección de correo electrónico ya fué registrada');
+        alertify.alert('Erro:', 'La dirección de correo electrónico ya fué registrada');
       }
     });
 };
