@@ -1,7 +1,6 @@
 const Utils = {
     parsedRequestUrl : () => {
         let url = location.hash.slice(1).toLowerCase() || '/';
-        console.log(url);
         let r = url.split('/');
         let request = {
         resource: null,
@@ -15,6 +14,5 @@ const Utils = {
         return request
       }  
 };
-console.log(Utils.parsedRequestUrl);
 
 export default Utils;
