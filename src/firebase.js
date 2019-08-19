@@ -232,7 +232,7 @@ const printPosts = user => {
 			const btnEliminar = document.getElementById('btn-eliminar');
       btnEliminar.addEventListener('click', () => borrarPublicacion(doc.id));
       
-			//Funciones básicas de like-dislike por Rosario
+			//Funciones básicasgit  de like-dislike por Rosario
 			const btnLike = document.getElementById('btn-like');
 			let i = 0;
 			const contadorLikes = () => {

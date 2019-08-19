@@ -165,7 +165,7 @@ h5 {
 
 
 #post-area {
-  width: 100%;
+  width: 80%;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -185,8 +185,12 @@ h5 {
   background-color: #e9b000 !important;
 }
 
-.btn-publication {
-  border-radius: 0px;
+.btn-publicar {
+  border-radius: 20px;
+  width: 100px;
+  height: 40px;
+  background-color: #008F95;
+  border-color: transparent;
 }
 
 .fa-bell2 {
@@ -201,3 +205,21 @@ h5 {
   background-color: #ae80da !important;
 }
 
+/* agregando más estilos a CSS por Rosario */
+
+.btn-reaction {
+  border-radius: 0px;
+  width: 100px;
+  height: 40px;
+  background-color: #008F95;
+  border-color: transparent;
+}
+
+.like-btn {
+background-color: #008F95;
+}
+
+.dislike-btn {
+  border-radius: 20px;
+  background-color: #008F95;
+}
