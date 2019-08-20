@@ -27,12 +27,12 @@ En México, todos los niños y niñas tienen derecho a la educación, sin embarg
 ## Ideación
 1. Diseño de la Interfaz de Usuario
 -   Prototipo de baja fidelidad
-     - ![Prototipo 1.1](/src/img/prototipobajafidelidad.png)
+     - ![Prototipo 1.1](https://github.com/VianeyLaraRangel/MEX008-social-network/blob/master/src/img/prototipobajafidelidad.png?raw=true)
      (De izquierda a derecha)
       Bienvenida, inicio de sesión,vista previa de inicio, elementos guardados en perfil de usuario.
 
    -   Prototipo 1.2 Alta fidelidad (figma)
-     ![Prototipo alta fidelidad](/src/img/imagenprototipo.png)
+     ![Prototipo alta fidelidad](https://github.com/VianeyLaraRangel/MEX008-social-network/blob/master/src/img/imagenprototipo.png?raw=true)
 
 [ENLACE A FIGMA](https://www.figma.com/proto/WhnDjChVmqWcP2N9n7HLYy/hopaki-2?node-id=2%3A75&scaling=min-zoom&redirected=1)
 
