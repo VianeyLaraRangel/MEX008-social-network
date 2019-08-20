@@ -38,6 +38,15 @@ En México, todos los niños y niñas tienen derecho a la educación, sin embarg
 
 -   Implementación de la Interfaz de Usuario (HTML/CSS/JS)
 
+El _visual design_ se basa en la psicología del color y los componentes de bootstrap.
+
+El **color naranja** representa la diversión, sociabilidad y alegría.
+
+El **color amarillo** representa la vitalidad y juventud, todo unido bajo el **color azul**  que representa lo espiritual, la reflexión y la calma.
+
+[Artículo de referencia](https://aprendizajeyvida.com/2014/04/28/el-color-naranja/)
+
+
    <!--* ![Ejemplos]()-->
 # Definición del producto
 
