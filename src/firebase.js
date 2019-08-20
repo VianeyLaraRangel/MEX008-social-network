@@ -213,11 +213,14 @@ const printPosts = user => {
 			console.log(`${doc.data().first}`);
 			postArea.innerHTML += ` <br>
 		<div class="data-box">
-		<p class="form-control" id="exampleFormControlTextarea1" rows="3">${doc.data().first}</p>
+		<p rows="3">${doc.data().first}</p>
 			<div class="btn-group btn-group-toggle" data-toggle="buttons">
         		<td><button class="btn btn-danger" id="btn-eliminar">Eliminar</button></td>
         <td><button class="btn btn-warning"  id="btn-editar">Editar</button></td>
-        <td><input type="button" id="btn-like" value="Like" class="btn like-btn"></td>
+		<td><button type="button" id="btn-like" class="btn like-btn"><i class="fas fa-heart"></i></button></td>
+
+		<td><input type="text" id="print-count" class="like-btn input-like"></td>
+
         <td><input type="button" id="btn-dislike" value="Dislike" class="btn dislike-btn"></td>
 			</div>
         </div>`;
@@ -226,18 +229,30 @@ const printPosts = user => {
       
 			//Funciones básicasgit  de like-dislike por Rosario
 			const btnLike = document.getElementById('btn-like');
-			let i = 0;
-			const contadorLikes = () => {
-				i = i + 1;
-				btnLike.value = 'Like (' + i + ')';
-			};
-			btnLike.addEventListener('click', contadorLikes);
+
+			const btnCounter = document.getElementById('print-count');
+			console.log(btnCounter);
+			
 			const btnDislike = document.getElementById('btn-dislike');
+			let i = 0;
+			
+			const contadorLikes = () => {
+				
+				i = i + 1;
+				const btnLikeUser = btnLike; 
+				btnLike.value = 'Like' + i;
+				console.log(i);
+				btnCounter.value= i;
+			};
+			
 			const contadorDislikes = () => {
 				i = i - 1;
-				btnLike.value = 'Like (' + i + ')';
+				btnLike.value = 'Like' + i;
+				console.log(i);
+				btnCounter.value= i;
 			};
 
+			btnLike.addEventListener('click', contadorLikes);
 			btnDislike.addEventListener('click', contadorDislikes);
 		});
 	});

@@ -219,6 +219,10 @@ h5 {
 background-color: #008F95;
 }
 
+.input-like{
+  width: 50px;
+}
+
 .dislike-btn {
   border-radius: 20px;
   background-color: #008F95;
