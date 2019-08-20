@@ -61,9 +61,7 @@ const registerGmail = () => {
 	//Crea una instancia del objeto del proveedor de Google
 	const provider = new firebase.auth.GoogleAuthProvider();
 	//Autentica a traves de una ventana emergente
-	firebase
-		.auth()
-		.signInWithPopup(provider)
+	firebase.auth().signInWithPopup(provider)
 		.then(result => {
 			//Google Access Token.
 			const token = result.credential.accessToken;
@@ -89,10 +87,8 @@ const registerFb = () => {
 	//Crea una instancia del objeto del proveedor de FB
 	const provider = new firebase.auth.FacebookAuthProvider();
 	//Autentica a traves de una ventana emergente
-	firebase
-		.auth()
-		.signInWithPopup(provider)
-		.then(function(result) {
+	firebase.auth().signInWithPopup(provider)
+		.then((result) => {
 			alert('exito');
 			console.log('result');
 			//FB Access Token.
@@ -122,9 +118,7 @@ const loginUser = (loginEmail, loginPassword) => {
 	if (loginEmail === '') {
 		alert('¡Recuerda ingresar el correo con el que te registraste!');
 	}
-	firebase
-		.auth()
-		.signInWithEmailAndPassword(loginEmail, loginPassword)
+	firebase.auth().signInWithEmailAndPassword(loginEmail, loginPassword)
 		.then(() => {
 			location.hash = '#/inicio';
 		})
@@ -134,7 +128,6 @@ const loginUser = (loginEmail, loginPassword) => {
 			const errorMessage = error.message;
 			console.log(errorCode);
 			console.log(errorMessage);
-
 			if (errorCode === 'auth/invalid-email') {
 				alert('Correo inválido: Ingresa la dirección completa');
 			} else if (errorCode === 'auth/weak-password') {
@@ -144,10 +137,7 @@ const loginUser = (loginEmail, loginPassword) => {
 			}
 		});
 };
-//Funcion para verificar contraseña
-const verifyEmail = () => {
 
-};
 //Función para reestablecer contraseña
 const resetPassword = () => {
 	const auth = firebase.auth();

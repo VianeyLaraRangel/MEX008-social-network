@@ -30,7 +30,7 @@ let inicio = {
             <button id="cerrar-btn" class="btn btn-warning"> Cerrar Sesión </button>
         </div>
     </nav>
-    <br><br>
+    <br>
     <form>
         <div class="form-group">
             <textarea class="form-control" id="publication-text" rows="3" placeholder= "¿Que vas a compartir hoy?"></textarea>
@@ -41,7 +41,7 @@ let inicio = {
             </div>
         </div>
     </form>
-    <br><br>
+    <br>
     <section id="post-area" class="feeds"></section>` 
     return view;
   },
