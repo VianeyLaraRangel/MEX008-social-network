@@ -17,26 +17,25 @@ const db = firebase.firestore();
 //Función registrar usuario con correo y contraseña
 const register = (email, password) => {
 	if (password === '') {
-		alert('¡No olvides crear tu contraseña! Debe tener al menos 6 caracteres');
+		Swal.fire('¡No olvides crear tu contraseña! Debe tener al menos 6 caracteres');
 	}
 	if (email === '') {
-		alert('¡No olvides ingresar un correo electrónico válido!');
+		Swal.fire('¡No olvides ingresar un correo electrónico válido!');
 	}
 	firebase
-		.auth()
-		.createUserWithEmailAndPassword(email, password)
+		.auth().createUserWithEmailAndPassword(email, password)
 		.then(() => {
 			location.hash = '#/login';
 			const user = firebase.auth().currentUser;
 			console.log(user);
 			user.sendEmailVerification()
 				.then(() => {
-					alert('¡Se enviará un mensaje de verificacion a tu dirección de correo electronico!');
+					Swal.fire('¡Se enviará un mensaje de verificacion a tu dirección de correo electronico!');
 					// Email sent.
 					cerrarSesion();
 				})
 				.catch(error => {
-					alert('Tu registro no fue existoso');
+					Swal.fire('Tu registro no fue existoso');
 				});
 		})
 		.catch(error => {
@@ -47,11 +46,11 @@ const register = (email, password) => {
 			console.log(errorMessage);
 
 			if (errorCode === 'auth/invalid-email') {
-				alert('Correo inválido: Ingresa la dirección completa');
+				Swal.fire('Correo inválido: Ingresa la dirección completa');
 			} else if (errorCode === 'auth/weak-password') {
-				alert('La constraseña debe tener 6 caracteres mínimo');
+				Swal.fire('La constraseña debe tener 6 caracteres mínimo');
 			} else if (errorCode === 'auth/email-already-in-use') {
-				alert('La dirección de correo electrónico ya fué registrada');
+				Swal.fire('La dirección de correo electrónico ya fué registrada');
 			}
 		});
 };
@@ -89,7 +88,7 @@ const registerFb = () => {
 	//Autentica a traves de una ventana emergente
 	firebase.auth().signInWithPopup(provider)
 		.then((result) => {
-			alert('exito');
+			Swal.fire('exito');
 			console.log('result');
 			//FB Access Token.
 			const token = result.credential.accessToken;
@@ -113,10 +112,10 @@ const registerFb = () => {
 //Funcion para ingresar
 const loginUser = (loginEmail, loginPassword) => {
 	if (loginPassword === '') {
-		alert('¡Rucuerda la contraseña con la que te registraste');
+		Swal.fire('¡Rucuerda la contraseña con la que te registraste');
 	}
 	if (loginEmail === '') {
-		alert('¡Recuerda ingresar el correo con el que te registraste!');
+		Swal.fire('¡Recuerda ingresar el correo con el que te registraste!');
 	}
 	firebase.auth().signInWithEmailAndPassword(loginEmail, loginPassword)
 		.then(() => {
@@ -129,11 +128,11 @@ const loginUser = (loginEmail, loginPassword) => {
 			console.log(errorCode);
 			console.log(errorMessage);
 			if (errorCode === 'auth/invalid-email') {
-				alert('Correo inválido: Ingresa la dirección completa');
+				Swal.fire('Correo inválido: Ingresa la dirección completa');
 			} else if (errorCode === 'auth/weak-password') {
-				alert('La constraseña debe tener 6 caracteres mínimo');
+				Swal.fire('La constraseña debe tener 6 caracteres mínimo');
 			} else if (errorCode === 'auth/email-already-in-use') {
-				alert('La dirección de correo electrónico ya fué registrada');
+				Swal.fire('La dirección de correo electrónico ya fué registrada');
 			}
 		});
 };
@@ -142,7 +141,6 @@ const loginUser = (loginEmail, loginPassword) => {
 const resetPassword = () => {
 	const auth = firebase.auth();
 	const emailAddress = 'user@example.com';
-
 	auth.sendPasswordResetEmail(emailAddress)
 		.then(() => {
 			// Email sent.
@@ -160,7 +158,7 @@ const cerrarSesion = (user) => {
 	firebase.auth().signOut()
 		.then(() => {
       console.log('saliendo');
-      alert('Cerrando sesión.¡Vuelve pronto!');
+      Swal.fire('Cerrando sesión.¡Vuelve pronto!');
 			location.hash = '#/intro';
 		})
 		.catch(error => {
@@ -198,12 +196,12 @@ const printPosts = user => {
 			const borrarPublicacion = post => {
 				console.log('eliminar', post);
 				console.log(user);
-				alert('¿Seguro que quieres eliminar tú publicación?');
+				Swal.fire('¿Seguro que quieres eliminar tú publicación?');
 				db.collection('dbhopaki')
 					.doc(post)
 					.delete()
 					.then(function() {
-						alert('¡Tú publicación se ha eliminado');
+						Swal.fire('¡Tú publicación se ha eliminado');
 					})
 					.catch(function(error) {
 						console.error('Error removing document: ', error);
@@ -213,9 +211,9 @@ const printPosts = user => {
 			//Cambiando template por Rosario
 
 			console.log(`${doc.data().first}`);
-			postArea.innerHTML += ` <br><br>
+			postArea.innerHTML += ` <br>
 		<div class="data-box">
-		<textarea class="form-control" id="exampleFormControlTextarea1" rows="3">${doc.data().first}</textarea>
+		<p class="form-control" id="exampleFormControlTextarea1" rows="3">${doc.data().first}</p>
 			<div class="btn-group btn-group-toggle" data-toggle="buttons">
         		<td><button class="btn btn-danger" id="btn-eliminar">Eliminar</button></td>
         <td><button class="btn btn-warning"  id="btn-editar">Editar</button></td>
