@@ -156,7 +156,7 @@ const resetPassword = () => {
 //Función para ingresar con FB
 
 //Función para cerrar sesión
-const cerrarSesion = user => {
+const cerrarSesion = (user) => {
 	firebase.auth().signOut()
 		.then(() => {
       console.log('saliendo');
